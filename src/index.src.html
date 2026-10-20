@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taumorrow</title>
+<meta name="description" content="Logic you can check: a chess engine that cannot bluff, provably fair multiplayer games, and a playable Nomic with an entrenched core, built on the Tau language.">
+<script>try{const t=localStorage.getItem("taumorrow.theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t;}catch(_){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700&amp;family=Source+Sans+3:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600;700&amp;display=swap">
+<style>
+:root{
+  --paper:#f1f3f6;--paper-2:#e6e9ee;--ink:#0f141c;--ink-2:#3a4150;--mute:#6b7383;--rule:#cfd5de;
+  --cobalt:#2448c8;--cobalt-ink:#ffffff;--live:#b2651a;--chain:#9aa3b4;
+  --sq:#dfe4ec;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0d1117;--paper-2:#131923;--ink:#e9edf3;--ink-2:#c3cad6;--mute:#8a93a6;--rule:#273040;
+  --cobalt:#6f8dff;--cobalt-ink:#0b1020;--live:#e39a4a;--chain:#4b5567;--sq:#161d2a;}}
+:root[data-theme="dark"]{
+  --paper:#0d1117;--paper-2:#131923;--ink:#e9edf3;--ink-2:#c3cad6;--mute:#8a93a6;--rule:#273040;
+  --cobalt:#6f8dff;--cobalt-ink:#0b1020;--live:#e39a4a;--chain:#4b5567;--sq:#161d2a;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 clamp(15.5px,1.1vw + 11px,17px)/1.6 "Source Sans 3","Noto Sans SC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+:lang(zh) body,body:lang(zh){font-family:"Noto Sans SC","Source Sans 3",system-ui,sans-serif}
+html:lang(th) body{font-family:"Noto Sans Thai","Source Sans 3",system-ui,sans-serif;line-height:1.75}
+html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .link .v,html:lang(th) .step .n{font-family:"Noto Sans Thai","Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:0}
+html:lang(ru) h1,html:lang(ru) h2,html:lang(ru) h3,html:lang(ru) .link .v{font-family:"Bricolage Grotesque","Source Sans 3",system-ui,sans-serif;letter-spacing:-.01em}
+a{color:var(--cobalt)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+/* header */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{font:700 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand small{display:block;font:500 11px/1 "JetBrains Mono",monospace;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;margin-top:5px}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+nav a{color:var(--ink-2);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;gap:2px;border:1px solid var(--rule);border-radius:999px;padding:2px}
+.lang button{border:0;background:transparent;color:var(--mute);font:500 12.5px/1 "JetBrains Mono",monospace;padding:7px 9px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.theme{border:1px solid var(--rule);background:transparent;color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.theme:hover{background:var(--paper-2)}
+@media (max-width:720px){header .wrap{justify-content:flex-start}nav{width:100%;justify-content:space-between;gap:10px}nav a{font-size:14px}.lang button{padding:7px 7px;font-size:12px}}
+@media (max-width:420px){nav a{font-size:13px}.brand{font-size:18px}}
+/* hero with board grid */
+.hero{position:relative;padding:72px 0 48px;overflow:hidden;border-bottom:1px solid var(--rule)}
+@media (max-width:720px){.hero{padding:44px 0 36px}.btns .btn{flex:1 1 100%;justify-content:center}.chain{margin-top:32px}}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--sq) 1px,transparent 1px),linear-gradient(90deg,var(--sq) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 85%);pointer-events:none}
+.hero .wrap{position:relative}
+.kicker{font:500 12.5px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 22px}
+h1{font:300 clamp(40px,7vw,86px)/.98 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.025em;margin:0 0 22px;max-width:14ch;text-wrap:balance}
+h1 b{font-weight:700}
+.sub{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:60ch;margin:0 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;border:1px solid transparent}
+.btn.primary{background:var(--cobalt);color:var(--cobalt-ink)}
+.btn.ghost{border-color:var(--rule);color:var(--ink)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 var(--live);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 55%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+/* chain strip */
+.chain{margin:48px 0 0;padding:18px 0 0;border-top:1px dashed var(--chain)}
+.chain .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+@media (max-width:900px){.chain .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.link::after{display:none}}
+@media (max-width:560px){.chain .row{grid-template-columns:1fr}}
+.link{min-width:0;padding:14px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;position:relative;overflow-wrap:anywhere}
+.link::after{content:"";position:absolute;right:-28px;top:50%;width:28px;height:1px;background:var(--chain)}
+.link:last-child::after{display:none}
+.link .k{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+.link .v{font:700 clamp(20px,1.9vw,26px)/1.1 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.02em;margin:0 0 6px;font-variant-numeric:tabular-nums}
+.link .d{font-size:14px;color:var(--ink-2);margin:0}
+.link .h{font:400 11.5px/1.4 "JetBrains Mono",monospace;color:var(--mute);margin:8px 0 0;word-break:break-all}
+/* sections */
+section{padding:64px 0;border-bottom:1px solid var(--rule)}
+@media (max-width:720px){section{padding:44px 0}}
+.sec-head{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:end;margin-bottom:30px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+.num{font:500 12.5px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+h2{font:500 clamp(28px,3.6vw,44px)/1.05 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.02em;margin:0}
+.lead{color:var(--ink-2);font-size:18px;margin:0;max-width:62ch}
+/* chapters */
+.chapter{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;padding:28px 0;border-top:1px solid var(--rule)}
+.chapter:first-of-type{border-top:0}
+@media (max-width:860px){.chapter{grid-template-columns:1fr}}
+.chapter h3{font:500 clamp(22px,2.4vw,30px)/1.15 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.015em;margin:0 0 10px}
+.chapter p{margin:0 0 14px;color:var(--ink-2)}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--paper-2)}
+@media (max-width:560px){.facts li{grid-template-columns:1fr;gap:4px}}
+.facts .v a{overflow-wrap:anywhere}
+.facts .k{font:500 11.5px/1.5 "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.facts .v{font-size:15px}
+.facts a{text-decoration:none;font-weight:600}
+.facts .doi{font:400 13px/1.5 "JetBrains Mono",monospace;color:var(--mute);display:block}
+/* how */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.step{padding:18px;border:1px solid var(--rule);border-radius:10px;background:var(--paper-2)}
+.step .n{font:700 34px/1 "Bricolage Grotesque",sans-serif;color:var(--cobalt);margin:0 0 10px;letter-spacing:-.03em}
+.step h4{margin:0 0 6px;font:600 17px/1.3 "Source Sans 3","Noto Sans SC",sans-serif}
+.step p{margin:0;color:var(--ink-2);font-size:15.5px}
+.credit{margin:28px 0 0;padding:18px 20px;border-left:3px solid var(--cobalt);color:var(--ink-2);max-width:78ch}
+/* learn */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{padding:18px;border:1px solid var(--rule);border-radius:10px;background:var(--paper-2)}
+.card h4{margin:0 0 6px;font:600 17px/1.3 "Source Sans 3","Noto Sans SC",sans-serif}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px}
+.card a{text-decoration:none;font-weight:600;font-size:15px}
+/* footer */
+footer{padding:40px 0 56px;color:var(--mute);font-size:14.5px}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;overflow-wrap:anywhere}
+footer h5{margin:0 0 8px;font:500 11.5px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+footer a{text-decoration:none}
+.todo{border:1px dashed var(--chain);border-radius:8px;padding:10px 12px;font-size:13.5px}
+.sr{position:absolute;left:-9999px}
+#net{position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;opacity:.9}
+main,header,footer{position:relative}
+.hero::before{display:none}
+</style>
+</head>
+<body>
+<canvas id="net" aria-hidden="true"></canvas>
+<header><div class="wrap">
+  <a class="brand" href="#top">Taumorrow<small data-i18n="brand.sub">logic you can check</small></a>
+  <nav aria-label="Sections">
+    <a href="#works" data-i18n="nav.works">Works</a><a href="#how" data-i18n="nav.how">How</a><a href="#papers" data-i18n="nav.papers">Papers</a><a href="#learn" data-i18n="nav.learn">Learn</a>
+    <div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">EN</button><button data-lang="de">DE</button><button data-lang="es">ES</button><button data-lang="zh">中文</button><button data-lang="ru">RU</button><button data-lang="th">ไทย</button></div>
+    <button class="theme" id="theme" type="button" aria-label="Toggle colour scheme" title="Light / dark"><span aria-hidden="true">◐</span></button>
+  </nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <p class="kicker" data-i18n="hero.kicker">Built on the Tau language · Germany · in the open since October 2024</p>
+  <h1 data-i18n-html="hero.h1">Decided,<br>not <b>guessed.</b></h1>
+  <p class="sub" data-i18n="hero.sub">Taumorrow builds systems whose every step is a proof anyone can check: a chess engine that cannot bluff, multiplayer games that are fair by construction, and a game of rules whose core no rule change can break.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://tau-chess.mooo.info/"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.cta1">Watch the chess engine</span></a>
+    <a class="btn ghost" href="#works" data-i18n="hero.cta2">The three works</a>
+  </div>
+  <div class="chain" aria-label="Record">
+    <div class="row">
+      <div class="link"><p class="k" data-i18n="chain.k1">Premiere</p><p class="v">29 : 0</p><p class="d" data-i18n="chain.d1">vs. Claude Haiku, 29 games, public</p></div>
+      <div class="link"><p class="k" data-i18n="chain.k2">18 Oct 2026</p><p class="v">9 : 1</p><p class="d" data-i18n="chain.d2">vs. Claude Sonnet 5.5 (Thinking), 10 games, public</p></div>
+      <div class="link"><p class="k" data-i18n="chain.k3">Every move</p><p class="v" data-i18n="chain.v3">a record</p><p class="d" data-i18n="chain.d3">hash-chained, recomputable by anyone</p></div>
+      <div class="link"><p class="k" data-i18n="chain.k4">Training data</p><p class="v" data-i18n="chain.v4">own games only</p><p class="d" data-i18n="chain.d4">games against language models are a measure, never a lesson</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="works"><div class="wrap">
+  <div class="sec-head"><div><p class="num">01</p><h2 data-i18n="works.h2">Three works, one method</h2></div><p class="lead" data-i18n="works.lead">Each is a different game. Each runs on the same idea: write the rules as formulas a machine can decide, let the machine decide them for every case, and keep a record that anyone can recompute.</p></div>
+
+  <article class="chapter">
+    <div><h3 data-i18n="w1.h3">Tau Chess — a chess engine that cannot bluff</h3>
+      <p data-i18n="w1.p1">A chess engine whose every move is decided by logic, not estimated by a network. Shortcuts that make the search faster are admitted only with a decided proof that they never change the result. It plays frontier language models live, in public, and shows its own view of the position as it thinks.</p>
+      <p data-i18n="w1.p2">What it learns, it learns from its own games, under a gate that is decided before any change is accepted. Games against language models are a measure of strength, never training material.</p></div>
+    <ul class="facts">
+      <li><span class="k" data-i18n="f.live">Live</span><span class="v"><a href="https://tau-chess.mooo.info/">tau-chess.mooo.info</a></span></li>
+      <li><span class="k" data-i18n="f.paper">Paper</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23165449">The Admitted Shortcut</a><span class="doi">doi:10.5281/zenodo.23165449 · 7 Oct 2026</span></span></li>
+      <li><span class="k" data-i18n="f.paper">Paper</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208550">Learning under a Decided Gate</a><span class="doi">doi:10.5281/zenodo.23208550 · 7 Oct 2026</span></span></li>
+      <li><span class="k" data-i18n="f.status">Status</span><span class="v" data-i18n="w1.status">Playing. Public results above. Parts of the method are patent pending.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
+    <div><h3 data-i18n="w2.h3">The Round as a Formula — multiplayer games fair by construction</h3>
+      <p data-i18n="w2.p1">Lotteries, shared pots, bets against a bank, a hand of cards, a move on a board: games where several parties act at once and one step decides the round. Usually that step is a program run by an operator you have to trust. Here the round is a formula, every party can recompute it from the record, and the record cannot be rewritten.</p>
+      <p data-i18n="w2.p2">The method began as a whitepaper in December 2025 and is published as a paper with the executions a third party can repeat.</p></div>
+    <ul class="facts">
+      <li><span class="k" data-i18n="f.paper">Paper</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208762">The Round as a Formula</a><span class="doi">doi:10.5281/zenodo.23208762 · 7 Oct 2026</span></span></li>
+      <li><span class="k" data-i18n="f.origin">Origin</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming">Provably Fair Multiplayer Gaming via Formal Verification</a><span class="doi" data-i18n="w2.origin">whitepaper, December 2025, public repository</span></span></li>
+      <li><span class="k" data-i18n="f.status">Status</span><span class="v" data-i18n="w2.status">Method published. Parts are patent pending.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
+    <div><h3 data-i18n="w3.h3">A Playable Nomic — the game where changing the rules is the game</h3>
+      <p data-i18n="w3.p1">Nomic has been played since 1982. Where it has been computerized, a machine executes the rules the players write. Here the machine also decides whether a proposed rule change is legal with respect to the constitution, before it takes effect, and an entrenched core is proven to survive every sequence of legal steps.</p>
+      <p data-i18n="w3.p2">Two levels of self-amendment on a decidable substrate: the players change the rules, the rules cannot change what was proven.</p></div>
+    <ul class="facts">
+      <li><span class="k" data-i18n="f.paper">Paper</span><span class="v"><a href="https://doi.org/10.5281/zenodo.22038825">A Playable Nomic with a Provably Entrenched Core</a><span class="doi">doi:10.5281/zenodo.22038825 · 21 Aug 2026</span></span></li>
+      <li><span class="k" data-i18n="f.code">Preview</span><span class="v"><a href="https://github.com/taumorrow/tau-nomic-thegame">tau-nomic-thegame</a><span class="doi" data-i18n="w3.code">a game refereed by proof, sneak preview</span></span></li>
+      <li><span class="k" data-i18n="f.learn">Tutorial</span><span class="v"><a href="https://github.com/taumorrow/tau-lang-demos">Tau-Nomic tutorial series</a><span class="doi" data-i18n="w3.tut">twelve runnable specifications, nomic_00 to nomic_11</span></span></li>
+    </ul>
+  </article>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="sec-head"><div><p class="num">02</p><h2 data-i18n="how.h2">How it works, in four steps</h2></div><p class="lead" data-i18n="how.lead">The same four steps carry all three works. Nothing here is a parameter; the parameters stay in the workshop.</p></div>
+  <div class="steps">
+    <div class="step"><p class="n">1</p><h4 data-i18n="s1.h">Small formulas, each decided</h4><p data-i18n="s1.p">The logic is split by task into small specifications. The engine decides each one for every possible input, so there is no “probably”.</p></div>
+    <div class="step"><p class="n">2</p><h4 data-i18n="s2.h">Dependencies become wiring</h4><p data-i18n="s2.p">The output of one piece is the input of another. A transport layer passes values along and decides nothing itself.</p></div>
+    <div class="step"><p class="n">3</p><h4 data-i18n="s3.h">Shortcuts need a proof</h4><p data-i18n="s3.p">Anything that makes a search faster is admitted only with a decided statement that it never changes the result.</p></div>
+    <div class="step"><p class="n">4</p><h4 data-i18n="s4.h">Every step leaves a record</h4><p data-i18n="s4.p">Each game is a hash-chained record you can recompute. If the machine is wrong, you can show exactly where.</p></div>
+  </div>
+  <p class="credit" data-i18n-html="how.credit">Tau Language, its engine and its logics are the work of <b>Ohad Asor</b> and <b>IDNI AG</b>. The architecture built on it, the three works and the papers are Taumorrow’s own work. Parts of the method are patent pending. The materials are published under the <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: open to read, study, verify and learn from.</p>
+</div></section>
+
+<section id="papers"><div class="wrap">
+  <div class="sec-head"><div><p class="num">03</p><h2 data-i18n="papers.h2">Papers</h2></div><p class="lead" data-i18n="papers.lead">Published with DOIs, dated, citable. These are the primary sources for everything on this page.</p></div>
+  <ul class="facts">
+    <li><span class="k mono">2026-08-21</span><span class="v"><a href="https://doi.org/10.5281/zenodo.22038825">A Playable Nomic with a Provably Entrenched Core: Two-level self-amendment on a decidable substrate</a><span class="doi">doi:10.5281/zenodo.22038825</span></span></li>
+    <li><span class="k mono">2026-10-07</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208762">The Round as a Formula: Fair, transparent, real-time multiplayer games with the Tau language</a><span class="doi">doi:10.5281/zenodo.23208762</span></span></li>
+    <li><span class="k mono">2026-10-07</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23165449">The Admitted Shortcut: Tree search over sub-specifications of a decidable logic, with Tau Chess as the worked example</a><span class="doi">doi:10.5281/zenodo.23165449</span></span></li>
+    <li><span class="k mono">2026-10-07</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208550">Learning under a Decided Gate: Changing a table that an admitted shortcut reads</a><span class="doi">doi:10.5281/zenodo.23208550</span></span></li>
+  </ul>
+</div></section>
+
+<section id="learn"><div class="wrap">
+  <div class="sec-head"><div><p class="num">04</p><h2 data-i18n="learn.h2">Learn and follow</h2></div><p class="lead" data-i18n="learn.lead">Everything runs as it is. Take a specification, run it, change a rule, watch the verdict change.</p></div>
+  <div class="cards">
+    <div class="card"><h4 data-i18n="l1.h">Tau-Nomic tutorial series</h4><p data-i18n="l1.p">Twelve worked specifications, from the first rule to a self-amending game, with expected results you can check.</p><a href="https://github.com/taumorrow/tau-lang-demos">github.com/taumorrow/tau-lang-demos →</a></div>
+    <div class="card"><h4 data-i18n="l2.h">Fair gaming, from the start</h4><p data-i18n="l2.p">The December 2025 whitepaper and the public framework for trust-free games.</p><a href="https://github.com/taumorrow/provably_fair_gaming">github.com/taumorrow/provably_fair_gaming →</a></div>
+    <div class="card"><h4 data-i18n="l3.h">Updates</h4><p data-i18n="l3.p">Results, live dates and short write-ups as they happen.</p><a href="https://x.com/tau_l0g1x">x.com/tau_l0g1x →</a></div>
+    <div class="card"><h4 data-i18n="l4.h">Join the team</h4><p data-i18n="l4.p">Taumorrow is becoming a team around one method. Engineers, logicians, game designers, chess players: if you want to build things that can be checked, write to us.</p><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com →</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h5 data-i18n="ft.sites">Sites</h5><a href="https://taumorrow.com">taumorrow.com</a> · <a href="https://taumorrow.de">taumorrow.de</a> · <a href="https://taumorrow.eu">taumorrow.eu</a><br><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com</a></div>
+    <div><h5 data-i18n="ft.credits">Credits</h5><span data-i18n-html="ft.creditsText">Tau Language © IDNI AG · Taumorrow 2024–2026 · “Taumorrow” — trademark applied for · no cookies, no tracking; only your language and colour scheme are kept in this browser. Hosted on GitHub Pages (GitHub, Inc., USA), which processes connection data such as IP addresses to deliver the page.</span></div>
+  </div>
+</div></footer>
+
+<script>
+const I18N = {
+en:{},
+de:{
+ "brand.sub":"logik, die man prüfen kann","nav.works":"Arbeiten","nav.how":"Wie","nav.papers":"Schriften","nav.learn":"Lernen",
+ "hero.kicker":"Gebaut auf der Tau-Sprache · Deutschland · öffentlich seit Oktober 2024",
+ "hero.h1":"Entschieden,<br>nicht <b>geraten.</b>",
+ "hero.sub":"Taumorrow baut Systeme, deren jeder Schritt ein Beweis ist, den jeder prüfen kann: eine Schach-Engine, die nicht bluffen kann, Mehrspieler-Spiele, die durch Bauart fair sind, und ein Regelspiel, dessen Kern keine Regeländerung brechen kann.",
+ "hero.cta1":"Die Schach-Engine ansehen","hero.cta2":"Die drei Arbeiten",
+ "chain.k1":"Premiere","chain.d1":"gegen Claude Haiku, 29 Partien, öffentlich","chain.k2":"18. Okt. 2026","chain.d2":"gegen Claude Sonnet 5.5 (Thinking), 10 Partien, öffentlich",
+ "chain.k3":"Jeder Zug","chain.v3":"ein Datensatz","chain.d3":"als Hash-Kette, von jedem nachrechenbar","chain.k4":"Lernstoff","chain.v4":"nur eigene Partien","chain.d4":"Partien gegen Sprachmodelle sind Maß, nie Lektion",
+ "works.h2":"Drei Arbeiten, eine Methode","works.lead":"Jede ist ein anderes Spiel. Alle laufen auf derselben Idee: die Regeln als Formeln schreiben, die eine Maschine entscheiden kann, sie für jeden Fall entscheiden lassen, und einen Datensatz führen, den jeder nachrechnen kann.",
+ "w1.h3":"Tau Chess — eine Schach-Engine, die nicht bluffen kann",
+ "w1.p1":"Eine Schach-Engine, deren jeder Zug durch Logik entschieden wird, nicht von einem Netz geschätzt. Abkürzungen, die die Suche schneller machen, werden nur mit einem entschiedenen Beweis zugelassen, dass sie das Ergebnis nie ändern. Sie spielt live und öffentlich gegen die großen Sprachmodelle und zeigt ihre eigene Sicht der Stellung, während sie denkt.",
+ "w1.p2":"Was sie lernt, lernt sie aus eigenen Partien, unter einem Tor, das vor jeder Übernahme entschieden wird. Partien gegen Sprachmodelle sind Maß der Stärke, nie Lernstoff.",
+ "f.live":"Live","f.paper":"Schrift","f.status":"Stand","f.origin":"Ursprung","f.code":"Vorschau","f.learn":"Tutorial",
+ "w1.status":"Spielt. Öffentliche Ergebnisse oben. Teile der Methode sind zum Patent angemeldet.",
+ "w2.h3":"The Round as a Formula — Mehrspieler-Spiele, fair durch Bauart",
+ "w2.p1":"Lotterien, geteilte Töpfe, Wetten gegen eine Bank, ein Blatt Karten, ein Zug auf einem Brett: Spiele, in denen mehrere zugleich handeln und ein Schritt die Runde entscheidet. Meist ist dieser Schritt ein Programm eines Betreibers, dem man vertrauen muss. Hier ist die Runde eine Formel, jede Partei kann sie aus dem Datensatz nachrechnen, und der Datensatz lässt sich nicht umschreiben.",
+ "w2.p2":"Die Methode begann als Whitepaper im Dezember 2025 und ist als Schrift veröffentlicht, mit den Ausführungen, die ein Dritter wiederholen kann.",
+ "w2.origin":"Whitepaper, Dezember 2025, öffentliches Repository","w2.status":"Methode veröffentlicht. Teile sind zum Patent angemeldet.",
+ "w3.h3":"A Playable Nomic — das Spiel, in dem Regeln ändern das Spiel ist",
+ "w3.p1":"Nomic wird seit 1982 gespielt. Wo es auf Rechner kam, führt eine Maschine die Regeln aus, die die Spieler schreiben. Hier entscheidet die Maschine auch, ob eine vorgeschlagene Regeländerung gegenüber der Verfassung zulässig ist, bevor sie gilt, und ein verankerter Kern ist bewiesen gegen jede Folge zulässiger Schritte.",
+ "w3.p2":"Zwei Ebenen der Selbständerung auf entscheidbarem Grund: die Spieler ändern die Regeln, die Regeln können nicht ändern, was bewiesen ist.",
+ "w3.code":"ein Spiel, das ein Beweis schiedsrichtert, Vorschau","w3.tut":"zwölf lauffähige Spezifikationen, nomic_00 bis nomic_11",
+ "how.h2":"So funktioniert es, in vier Schritten","how.lead":"Dieselben vier Schritte tragen alle drei Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.",
+ "s1.h":"Kleine Formeln, jede entschieden","s1.p":"Die Logik ist nach Aufgabe in kleine Spezifikationen zerlegt. Die Engine entscheidet jede für jede mögliche Eingabe, es gibt kein „wahrscheinlich“.",
+ "s2.h":"Abhängigkeiten werden zur Verdrahtung","s2.p":"Der Ausgang eines Teils ist der Eingang eines anderen. Eine Transportschicht reicht Werte weiter und entscheidet selbst nichts.",
+ "s3.h":"Abkürzungen brauchen einen Beweis","s3.p":"Was eine Suche schneller macht, wird nur mit einer entschiedenen Aussage zugelassen, dass es das Ergebnis nie ändert.",
+ "s4.h":"Jeder Schritt hinterlässt einen Datensatz","s4.p":"Jede Partie ist eine Hash-Kette, die man nachrechnen kann. Irrt die Maschine, kann man zeigen, wo genau.",
+ "how.credit":"Die Tau-Sprache, ihre Engine und ihre Logiken sind das Werk von <b>Ohad Asor</b> und der <b>IDNI AG</b>. Die darauf gebaute Architektur, die drei Arbeiten und die Schriften sind Taumorrows eigene Arbeit. Teile der Methode sind zum Patent angemeldet. Die Materialien stehen unter der <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: offen zum Lesen, Studieren, Prüfen und Lernen.",
+ "papers.h2":"Schriften","papers.lead":"Mit DOI veröffentlicht, datiert, zitierbar. Das sind die Primärquellen für alles auf dieser Seite.",
+ "learn.h2":"Lernen und folgen","learn.lead":"Alles läuft, wie es ist. Nimm eine Spezifikation, führe sie aus, ändere eine Regel, sieh zu, wie sich das Verdikt ändert.",
+ "l1.h":"Tau-Nomic-Tutorial-Reihe","l1.p":"Zwölf ausgearbeitete Spezifikationen, von der ersten Regel bis zum selbständernden Spiel, mit erwarteten Ergebnissen zum Prüfen.",
+ "l2.h":"Faire Spiele, von Anfang an","l2.p":"Das Whitepaper vom Dezember 2025 und das öffentliche Gerüst für vertrauensfreie Spiele.",
+ "l3.h":"Neuigkeiten","l3.p":"Ergebnisse, Live-Termine und kurze Berichte, sobald es sie gibt.",
+ "l4.h":"Ins Team","l4.p":"Taumorrow wird ein Team um eine Methode. Ingenieure, Logiker, Spieleentwickler, Schachspieler: wer Dinge bauen will, die man prüfen kann, schreibt uns.",
+ "ft.sites":"Seiten","ft.legal":"Impressum","ft.todo":"Name und Anschrift des Betreibers (§ 18 MStV). Trägt der Inhaber vor der Freischaltung ein.","ft.credits":"Hinweise",
+ "ft.creditsText":"Tau Language © IDNI AG · Taumorrow 2024–2026 · „Taumorrow“ ist als Marke angemeldet · keine Cookies, kein Tracking; nur Sprache und Farbschema bleiben in diesem Browser. Gehostet auf GitHub Pages (GitHub, Inc., USA); GitHub verarbeitet zur Auslieferung Verbindungsdaten wie IP-Adressen."
+},
+es:{
+ "brand.sub":"lógica que se puede comprobar","nav.works":"Trabajos","nav.how":"Cómo","nav.papers":"Artículos","nav.learn":"Aprender",
+ "hero.kicker":"Construido sobre el lenguaje Tau · Alemania · en abierto desde octubre de 2024",
+ "hero.h1":"Decidido,<br>no <b>adivinado.</b>",
+ "hero.sub":"Taumorrow construye sistemas en los que cada paso es una prueba que cualquiera puede comprobar: un motor de ajedrez que no puede farolear, juegos multijugador justos por construcción y un juego de reglas cuyo núcleo ningún cambio de regla puede romper.",
+ "hero.cta1":"Ver el motor de ajedrez","hero.cta2":"Los tres trabajos",
+ "chain.k1":"Estreno","chain.d1":"contra Claude Haiku, 29 partidas, público","chain.k2":"18 oct 2026","chain.d2":"contra Claude Sonnet 5.5 (Thinking), 10 partidas, público",
+ "chain.k3":"Cada jugada","chain.v3":"un registro","chain.d3":"encadenado por hash, recalculable por cualquiera","chain.k4":"Datos de aprendizaje","chain.v4":"solo partidas propias","chain.d4":"las partidas contra modelos de lenguaje son medida, nunca lección",
+ "works.h2":"Tres trabajos, un método","works.lead":"Cada uno es un juego distinto. Todos corren sobre la misma idea: escribir las reglas como fórmulas que una máquina puede decidir, dejar que las decida para cada caso y guardar un registro que cualquiera puede recalcular.",
+ "w1.h3":"Tau Chess — un motor de ajedrez que no puede farolear",
+ "w1.p1":"Un motor de ajedrez cuya cada jugada se decide por lógica, no la estima una red. Los atajos que aceleran la búsqueda solo se admiten con una prueba decidida de que nunca cambian el resultado. Juega en vivo y en público contra los grandes modelos de lenguaje y muestra su propia visión de la posición mientras piensa.",
+ "w1.p2":"Lo que aprende, lo aprende de sus propias partidas, bajo una puerta que se decide antes de aceptar cualquier cambio. Las partidas contra modelos de lenguaje miden la fuerza, nunca son material de entrenamiento.",
+ "f.live":"En vivo","f.paper":"Artículo","f.status":"Estado","f.origin":"Origen","f.code":"Avance","f.learn":"Tutorial",
+ "w1.status":"Jugando. Resultados públicos arriba. Partes del método tienen patente pendiente.",
+ "w2.h3":"The Round as a Formula — juegos multijugador justos por construcción",
+ "w2.p1":"Loterías, botes compartidos, apuestas contra una banca, una mano de cartas, un movimiento en un tablero: juegos en los que varios actúan a la vez y un paso decide la ronda. Normalmente ese paso es un programa de un operador en el que hay que confiar. Aquí la ronda es una fórmula, cada parte puede recalcularla desde el registro, y el registro no se puede reescribir.",
+ "w2.p2":"El método empezó como libro blanco en diciembre de 2025 y está publicado como artículo con las ejecuciones que un tercero puede repetir.",
+ "w2.origin":"libro blanco, diciembre de 2025, repositorio público","w2.status":"Método publicado. Partes tienen patente pendiente.",
+ "w3.h3":"A Playable Nomic — el juego en que cambiar las reglas es el juego",
+ "w3.p1":"Nomic se juega desde 1982. Donde se ha informatizado, una máquina ejecuta las reglas que escriben los jugadores. Aquí la máquina también decide si un cambio de regla propuesto es legal respecto a la constitución, antes de que entre en vigor, y un núcleo atrincherado está probado contra toda secuencia de pasos legales.",
+ "w3.p2":"Dos niveles de autoenmienda sobre un sustrato decidible: los jugadores cambian las reglas, las reglas no pueden cambiar lo que está probado.",
+ "w3.code":"un juego arbitrado por una prueba, avance","w3.tut":"doce especificaciones ejecutables, nomic_00 a nomic_11",
+ "how.h2":"Cómo funciona, en cuatro pasos","how.lead":"Los mismos cuatro pasos sostienen los tres trabajos. Nada aquí es un parámetro; los parámetros se quedan en el taller.",
+ "s1.h":"Fórmulas pequeñas, cada una decidida","s1.p":"La lógica se divide por tarea en especificaciones pequeñas. El motor decide cada una para toda entrada posible; no hay “probablemente”.",
+ "s2.h":"Las dependencias se vuelven cableado","s2.p":"La salida de una pieza es la entrada de otra. Una capa de transporte pasa valores y no decide nada por sí misma.",
+ "s3.h":"Los atajos necesitan una prueba","s3.p":"Todo lo que acelera una búsqueda se admite solo con una afirmación decidida de que nunca cambia el resultado.",
+ "s4.h":"Cada paso deja un registro","s4.p":"Cada partida es una cadena de hashes que se puede recalcular. Si la máquina se equivoca, se puede mostrar exactamente dónde.",
+ "how.credit":"El lenguaje Tau, su motor y sus lógicas son obra de <b>Ohad Asor</b> e <b>IDNI AG</b>. La arquitectura construida sobre él, los tres trabajos y los artículos son obra propia de Taumorrow. Partes del método tienen patente pendiente. Los materiales se publican bajo la <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: abiertos para leer, estudiar, verificar y aprender.",
+ "papers.h2":"Artículos","papers.lead":"Publicados con DOI, fechados, citables. Son las fuentes primarias de todo lo que hay en esta página.",
+ "learn.h2":"Aprender y seguir","learn.lead":"Todo corre tal cual. Toma una especificación, ejecútala, cambia una regla y mira cómo cambia el veredicto.",
+ "l1.h":"Serie de tutoriales Tau-Nomic","l1.p":"Doce especificaciones trabajadas, desde la primera regla hasta un juego que se enmienda a sí mismo, con resultados esperados que puedes comprobar.",
+ "l2.h":"Juegos justos, desde el principio","l2.p":"El libro blanco de diciembre de 2025 y el marco público para juegos sin confianza.",
+ "l3.h":"Novedades","l3.p":"Resultados, fechas en vivo y notas breves según ocurren.",
+ "l4.h":"Únete al equipo","l4.p":"Taumorrow se está convirtiendo en un equipo en torno a un método. Ingenieros, lógicos, diseñadores de juegos, ajedrecistas: si quieres construir cosas que se puedan comprobar, escríbenos.",
+ "ft.sites":"Sitios","ft.legal":"Aviso legal · Impressum","ft.todo":"Nombre y dirección postal del operador (§ 18 MStV). El titular lo completa antes del lanzamiento.","ft.credits":"Créditos",
+ "ft.creditsText":"Tau Language © IDNI AG · Taumorrow 2024–2026 · “Taumorrow” — marca solicitada · sin cookies ni rastreo; solo el idioma y el esquema de color se guardan en este navegador. Alojado en GitHub Pages (GitHub, Inc., EE. UU.), que procesa datos de conexión como direcciones IP para servir la página."
+},
+zh:{
+ "brand.sub":"可以验证的逻辑","nav.works":"作品","nav.how":"原理","nav.papers":"论文","nav.learn":"学习",
+ "hero.kicker":"基于 Tau 语言构建 · 德国 · 自 2024 年 10 月公开",
+ "hero.h1":"是判定，<br>不是<b>猜测。</b>",
+ "hero.sub":"Taumorrow 构建的系统，每一步都是任何人都可以验证的证明：一个不会虚张声势的国际象棋引擎、从构造上就公平的多人游戏，以及一个任何规则修改都无法破坏其核心的规则游戏。",
+ "hero.cta1":"观看国际象棋引擎","hero.cta2":"三项作品",
+ "chain.k1":"首演","chain.d1":"对阵 Claude Haiku，29 局，公开","chain.k2":"2026 年 10 月 18 日","chain.d2":"对阵 Claude Sonnet 5.5（Thinking），10 局，公开",
+ "chain.k3":"每一步","chain.v3":"一条记录","chain.d3":"哈希链接，任何人都可重新计算","chain.k4":"训练数据","chain.v4":"仅限自己的对局","chain.d4":"与语言模型的对局只是度量，从不是教材",
+ "works.h2":"三项作品，一种方法","works.lead":"每一项都是不同的游戏，却基于同一个思想：把规则写成机器可以判定的公式，让机器对每一种情况做出判定，并保留任何人都能重新计算的记录。",
+ "w1.h3":"Tau Chess —— 不会虚张声势的国际象棋引擎",
+ "w1.p1":"这个引擎的每一步都由逻辑判定，而不是由网络估计。让搜索更快的捷径，只有在有判定证明表明它们绝不改变结果时才被采纳。它公开地与前沿语言模型实时对弈，并在思考时展示自己对局面的判断。",
+ "w1.p2":"它所学的一切都来自自己的对局，并经过在任何改动被接受之前就已判定的闸门。与语言模型的对局是实力的度量，从不是训练材料。",
+ "f.live":"直播","f.paper":"论文","f.status":"状态","f.origin":"起源","f.code":"预览","f.learn":"教程",
+ "w1.status":"持续对弈中。公开战绩见上方。方法的部分内容已申请专利。",
+ "w2.h3":"The Round as a Formula —— 从构造上就公平的多人游戏",
+ "w2.p1":"彩票、共享奖池、对庄下注、一手牌、棋盘上的一步：多方同时行动、由一步决定整轮的游戏。通常这一步是运营者运行的程序，你只能信任它。在这里，这一轮是一个公式，每一方都能从记录中重新计算它，而记录无法被改写。",
+ "w2.p2":"该方法始于 2025 年 12 月的白皮书，现已作为论文发表，附有第三方可以重复的执行过程。",
+ "w2.origin":"白皮书，2025 年 12 月，公开仓库","w2.status":"方法已发表。部分内容已申请专利。",
+ "w3.h3":"A Playable Nomic —— 改规则本身就是游戏的游戏",
+ "w3.p1":"Nomic 自 1982 年起就有人在玩。在它被计算机化的地方，机器执行玩家编写的规则。在这里，机器还会在规则修改生效之前，判定它相对于宪章是否合法；并且一个被固化的核心已被证明能经受住任何合法步骤序列。",
+ "w3.p2":"在可判定基底上的两级自我修订：玩家修改规则，规则无法改变已被证明的东西。",
+ "w3.code":"由证明裁判的游戏，抢先预览","w3.tut":"十二个可运行的规范，nomic_00 至 nomic_11",
+ "how.h2":"原理：四个步骤","how.lead":"同样的四个步骤支撑着全部三项作品。这里没有任何参数；参数留在工坊里。",
+ "s1.h":"小公式，各自判定","s1.p":"逻辑按任务拆分成小规范。引擎对每一种可能输入判定每一个规范，没有“大概”。",
+ "s2.h":"依赖关系成为接线","s2.p":"一个部件的输出是另一个部件的输入。传输层只传递数值，自己不做任何判定。",
+ "s3.h":"捷径需要证明","s3.p":"任何让搜索更快的东西，只有在有判定陈述表明它绝不改变结果时才被采纳。",
+ "s4.h":"每一步都留下记录","s4.p":"每一局都是可以重新计算的哈希链。如果机器出错，你可以指出错在哪里。",
+ "how.credit":"Tau 语言及其引擎与逻辑是 <b>Ohad Asor</b> 和 <b>IDNI AG</b> 的成果。建于其上的架构、三项作品和论文是 Taumorrow 自己的工作。方法的部分内容已申请专利。材料以 <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a> 发布：开放阅读、研究、验证和学习。",
+ "papers.h2":"论文","papers.lead":"带 DOI 发表，有日期，可引用。它们是本页一切内容的原始来源。",
+ "learn.h2":"学习与关注","learn.lead":"一切都可直接运行。取一个规范，运行它，改一条规则，看裁决如何改变。",
+ "l1.h":"Tau-Nomic 教程系列","l1.p":"十二个完整示例，从第一条规则到自我修订的游戏，附有可核对的预期结果。",
+ "l2.h":"公平游戏，从一开始","l2.p":"2025 年 12 月的白皮书以及面向无需信任的游戏的公开框架。",
+ "l3.h":"动态","l3.p":"战绩、直播日期和简短记述，随时更新。",
+ "l4.h":"加入团队","l4.p":"Taumorrow 正在围绕一种方法组建团队。工程师、逻辑学家、游戏设计师、棋手：如果你想构建可以被验证的东西，请写信给我们。",
+ "ft.sites":"站点","ft.legal":"法律声明 · Impressum","ft.todo":"运营者姓名与通信地址（§ 18 MStV）。由所有者在上线前填写。","ft.credits":"致谢",
+ "ft.creditsText":"Tau Language © IDNI AG · Taumorrow 2024–2026 · “Taumorrow” 已申请商标· 无 Cookie、无跟踪；本浏览器只保存语言与配色。托管于 GitHub Pages（GitHub, Inc.，美国），GitHub 为提供页面会处理 IP 地址等连接数据。"
+},
+ru:{
+ "brand.sub":"логика, которую можно проверить","nav.works":"Работы","nav.how":"Как","nav.papers":"Статьи","nav.learn":"Учиться",
+ "hero.kicker":"Построено на языке Tau · Германия · открыто с октября 2024",
+ "hero.h1":"Решено,<br>а не <b>угадано.</b>",
+ "hero.sub":"Taumorrow строит системы, в которых каждый шаг — доказательство, которое может проверить любой: шахматный движок, который не умеет блефовать, многопользовательские игры, честные по построению, и игра правил, ядро которой не сломает ни одно изменение правил.",
+ "hero.cta1":"Смотреть шахматный движок","hero.cta2":"Три работы",
+ "chain.k1":"Премьера","chain.d1":"против Claude Haiku, 29 партий, публично","chain.k2":"18 окт. 2026","chain.d2":"против Claude Sonnet 5.5 (Thinking), 10 партий, публично",
+ "chain.k3":"Каждый ход","chain.v3":"запись","chain.d3":"в хеш-цепочке, пересчитать может любой","chain.k4":"Данные для обучения","chain.v4":"только свои партии","chain.d4":"партии против языковых моделей — мера, а не урок",
+ "works.h2":"Три работы, один метод","works.lead":"Каждая — другая игра. Все держатся на одной идее: записать правила формулами, которые машина способна решить, дать ей решить их для каждого случая и вести запись, которую любой может пересчитать.",
+ "w1.h3":"Tau Chess — шахматный движок, который не умеет блефовать",
+ "w1.p1":"Шахматный движок, каждый ход которого решает логика, а не оценивает сеть. Сокращения, ускоряющие поиск, допускаются только с решённым доказательством того, что они никогда не меняют результат. Он играет вживую и публично против передовых языковых моделей и показывает собственный взгляд на позицию, пока думает.",
+ "w1.p2":"Чему он учится, он учится на собственных партиях, через затвор, который решается до принятия любого изменения. Партии против языковых моделей — мера силы, а не учебный материал.",
+ "f.live":"Вживую","f.paper":"Статья","f.status":"Статус","f.origin":"Истоки","f.code":"Превью","f.learn":"Учебник",
+ "w1.status":"Играет. Публичные результаты выше. Части метода — в процессе патентования.",
+ "w2.h3":"The Round as a Formula — многопользовательские игры, честные по построению",
+ "w2.p1":"Лотереи, общие банки, ставки против банка, рука карт, ход на доске: игры, где несколько сторон действуют одновременно и один шаг решает раунд. Обычно этот шаг — программа оператора, которому приходится доверять. Здесь раунд — формула, каждая сторона может пересчитать её по записи, а запись нельзя переписать.",
+ "w2.p2":"Метод начался как белая книга в декабре 2025 года и опубликован как статья с исполнениями, которые третья сторона может повторить.",
+ "w2.origin":"белая книга, декабрь 2025, открытый репозиторий","w2.status":"Метод опубликован. Части — в процессе патентования.",
+ "w3.h3":"A Playable Nomic — игра, в которой менять правила и есть игра",
+ "w3.p1":"В Nomic играют с 1982 года. Там, где его переносили на компьютер, машина исполняет правила, написанные игроками. Здесь машина также решает, законно ли предложенное изменение правил относительно конституции, прежде чем оно вступит в силу, а закреплённое ядро доказанно переживает любую последовательность законных шагов.",
+ "w3.p2":"Два уровня самоизменения на разрешимом основании: игроки меняют правила, правила не могут изменить доказанное.",
+ "w3.code":"игра, которую судит доказательство, превью","w3.tut":"двенадцать запускаемых спецификаций, nomic_00 — nomic_11",
+ "how.h2":"Как это работает: четыре шага","how.lead":"Одни и те же четыре шага несут все три работы. Здесь нет ни одного параметра; параметры остаются в мастерской.",
+ "s1.h":"Маленькие формулы, каждая решена","s1.p":"Логика разбита по задачам на маленькие спецификации. Движок решает каждую для любого возможного входа, никакого «вероятно».",
+ "s2.h":"Зависимости становятся проводкой","s2.p":"Выход одной части — вход другой. Транспортный слой передаёт значения и сам ничего не решает.",
+ "s3.h":"Сокращениям нужно доказательство","s3.p":"Всё, что ускоряет поиск, допускается только с решённым утверждением, что это никогда не меняет результат.",
+ "s4.h":"Каждый шаг оставляет запись","s4.p":"Каждая партия — хеш-цепочка, которую можно пересчитать. Если машина ошиблась, можно показать, где именно.",
+ "how.credit":"Язык Tau, его движок и его логики — работа <b>Охада Асора</b> и <b>IDNI AG</b>. Построенная на нём архитектура, три работы и статьи — собственная работа Taumorrow. Части метода находятся в процессе патентования. Материалы опубликованы под <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: открыты для чтения, изучения, проверки и обучения.",
+ "papers.h2":"Статьи","papers.lead":"Опубликованы с DOI, датированы, цитируемы. Это первоисточники всего, что есть на этой странице.",
+ "learn.h2":"Учиться и следить","learn.lead":"Всё работает как есть. Возьмите спецификацию, запустите её, измените правило и смотрите, как меняется вердикт.",
+ "l1.h":"Серия учебников Tau-Nomic","l1.p":"Двенадцать разобранных спецификаций — от первого правила до самоизменяющейся игры, с ожидаемыми результатами для проверки.",
+ "l2.h":"Честные игры, с самого начала","l2.p":"Белая книга декабря 2025 года и открытый каркас для игр без доверия.",
+ "l3.h":"Новости","l3.p":"Результаты, даты трансляций и короткие заметки по мере появления.",
+ "l4.h":"В команду","l4.p":"Taumorrow становится командой вокруг одного метода. Инженеры, логики, геймдизайнеры, шахматисты: если вы хотите строить то, что можно проверить, напишите нам.",
+ "ft.sites":"Сайты","ft.legal":"Правовая информация · Impressum","ft.todo":"Имя и почтовый адрес оператора (§ 18 MStV). Владелец заполняет перед запуском.","ft.credits":"Благодарности",
+ "ft.creditsText":"Tau Language © IDNI AG · Taumorrow 2024–2026 · «Taumorrow» — заявка на товарный знак подана · без cookies и слежки; в этом браузере сохраняются только язык и цветовая схема. Размещено на GitHub Pages (GitHub, Inc., США); для выдачи страницы GitHub обрабатывает данные соединения, например IP-адреса."
+},
+th:{
+ "brand.sub":"ตรรกะที่ตรวจสอบได้","nav.works":"ผลงาน","nav.how":"วิธีการ","nav.papers":"บทความ","nav.learn":"เรียนรู้",
+ "hero.kicker":"สร้างบนภาษา Tau · เยอรมนี · เปิดเผยสู่สาธารณะตั้งแต่ตุลาคม 2024",
+ "hero.h1":"ตัดสินแล้ว<br>ไม่ใช่<b>การเดา</b>",
+ "hero.sub":"Taumorrow สร้างระบบที่ทุกขั้นตอนคือข้อพิสูจน์ที่ใครก็ตรวจสอบได้: เอนจินหมากรุกที่ไม่อาจบลัฟ เกมหลายผู้เล่นที่ยุติธรรมโดยโครงสร้าง และเกมแห่งกฎที่ไม่มีการแก้กฎใดทำลายแกนกลางได้",
+ "hero.cta1":"ชมเอนจินหมากรุก","hero.cta2":"ผลงานทั้งสาม",
+ "chain.k1":"รอบปฐมทัศน์","chain.d1":"พบ Claude Haiku, 29 กระดาน, สาธารณะ","chain.k2":"18 ต.ค. 2026","chain.d2":"พบ Claude Sonnet 5.5 (Thinking), 10 กระดาน, สาธารณะ",
+ "chain.k3":"ทุกการเดิน","chain.v3":"หนึ่งบันทึก","chain.d3":"เชื่อมด้วยแฮช ใครก็คำนวณซ้ำได้","chain.k4":"ข้อมูลฝึก","chain.v4":"เฉพาะเกมของตัวเอง","chain.d4":"เกมกับโมเดลภาษาคือมาตรวัด ไม่ใช่บทเรียน",
+ "works.h2":"สามผลงาน หนึ่งวิธีการ","works.lead":"แต่ละชิ้นเป็นเกมที่ต่างกัน แต่ทั้งหมดอยู่บนแนวคิดเดียว: เขียนกฎเป็นสูตรที่เครื่องตัดสินได้ ให้เครื่องตัดสินทุกกรณี และเก็บบันทึกที่ใครก็คำนวณซ้ำได้",
+ "w1.h3":"Tau Chess — เอนจินหมากรุกที่ไม่อาจบลัฟ",
+ "w1.p1":"เอนจินหมากรุกที่ทุกการเดินถูกตัดสินด้วยตรรกะ ไม่ใช่การประมาณจากโครงข่าย ทางลัดที่ทำให้การค้นหาเร็วขึ้นจะได้รับอนุญาตก็ต่อเมื่อมีข้อพิสูจน์ที่ตัดสินแล้วว่าไม่เคยเปลี่ยนผลลัพธ์ มันเล่นสดและเปิดเผยกับโมเดลภาษาชั้นนำ และแสดงมุมมองของตัวเองต่อตำแหน่งขณะคิด",
+ "w1.p2":"สิ่งที่มันเรียนรู้ มาจากเกมของตัวเองเท่านั้น ผ่านประตูที่ตัดสินก่อนรับการเปลี่ยนแปลงใด ๆ เกมกับโมเดลภาษาคือมาตรวัดความแข็งแกร่ง ไม่ใช่ข้อมูลฝึก",
+ "f.live":"ถ่ายทอดสด","f.paper":"บทความ","f.status":"สถานะ","f.origin":"จุดเริ่มต้น","f.code":"ตัวอย่าง","f.learn":"บทเรียน",
+ "w1.status":"กำลังเล่น ผลลัพธ์สาธารณะอยู่ด้านบน บางส่วนของวิธีการอยู่ระหว่างการขอสิทธิบัตร",
+ "w2.h3":"The Round as a Formula — เกมหลายผู้เล่นที่ยุติธรรมโดยโครงสร้าง",
+ "w2.p1":"ลอตเตอรี กองกลางที่แบ่งกัน การเดิมพันกับเจ้ามือ ไพ่หนึ่งมือ การเดินบนกระดาน: เกมที่หลายฝ่ายกระทำพร้อมกันและหนึ่งขั้นตอนตัดสินทั้งรอบ โดยปกติขั้นตอนนั้นคือโปรแกรมของผู้ดำเนินการที่คุณต้องเชื่อใจ ที่นี่รอบคือสูตร ทุกฝ่ายคำนวณซ้ำได้จากบันทึก และบันทึกไม่อาจถูกเขียนใหม่",
+ "w2.p2":"วิธีการนี้เริ่มจากสมุดปกขาวในเดือนธันวาคม 2025 และตีพิมพ์เป็นบทความพร้อมการดำเนินการที่บุคคลที่สามทำซ้ำได้",
+ "w2.origin":"สมุดปกขาว ธันวาคม 2025 คลังสาธารณะ","w2.status":"ตีพิมพ์วิธีการแล้ว บางส่วนอยู่ระหว่างการขอสิทธิบัตร",
+ "w3.h3":"A Playable Nomic — เกมที่การแก้กฎคือตัวเกม",
+ "w3.p1":"Nomic ถูกเล่นมาตั้งแต่ปี 1982 เมื่อถูกนำขึ้นคอมพิวเตอร์ เครื่องจะดำเนินกฎที่ผู้เล่นเขียน ที่นี่เครื่องยังตัดสินด้วยว่าการแก้กฎที่เสนอชอบด้วยรัฐธรรมนูญหรือไม่ ก่อนที่จะมีผล และแกนกลางที่ตรึงไว้ได้รับการพิสูจน์ว่ารอดจากทุกลำดับขั้นตอนที่ชอบด้วยกฎ",
+ "w3.p2":"การแก้ไขตนเองสองระดับบนฐานที่ตัดสินได้: ผู้เล่นเปลี่ยนกฎ แต่กฎไม่อาจเปลี่ยนสิ่งที่พิสูจน์แล้ว",
+ "w3.code":"เกมที่ตัดสินโดยข้อพิสูจน์ ตัวอย่างล่วงหน้า","w3.tut":"ข้อกำหนดที่รันได้สิบสองชุด nomic_00 ถึง nomic_11",
+ "how.h2":"วิธีการทำงาน ในสี่ขั้นตอน","how.lead":"สี่ขั้นตอนเดียวกันรองรับผลงานทั้งสาม ไม่มีสิ่งใดในที่นี้เป็นพารามิเตอร์ พารามิเตอร์อยู่ในโรงงาน",
+ "s1.h":"สูตรเล็ก ๆ แต่ละสูตรตัดสินแล้ว","s1.p":"ตรรกะถูกแบ่งตามงานเป็นข้อกำหนดเล็ก ๆ เอนจินตัดสินแต่ละข้อสำหรับทุกอินพุตที่เป็นไปได้ ไม่มีคำว่า “น่าจะ”",
+ "s2.h":"การพึ่งพากลายเป็นสายเชื่อม","s2.p":"เอาต์พุตของชิ้นหนึ่งคืออินพุตของอีกชิ้น ชั้นขนส่งส่งต่อค่าและไม่ตัดสินสิ่งใดเอง",
+ "s3.h":"ทางลัดต้องมีข้อพิสูจน์","s3.p":"สิ่งใดที่ทำให้การค้นหาเร็วขึ้นจะได้รับอนุญาตก็ต่อเมื่อมีข้อความที่ตัดสินแล้วว่าไม่เคยเปลี่ยนผลลัพธ์",
+ "s4.h":"ทุกขั้นตอนทิ้งบันทึกไว้","s4.p":"แต่ละเกมคือสายโซ่แฮชที่คำนวณซ้ำได้ หากเครื่องผิด คุณชี้ได้ว่าผิดตรงไหน",
+ "how.credit":"ภาษา Tau เอนจินและตรรกะของมันเป็นผลงานของ <b>Ohad Asor</b> และ <b>IDNI AG</b> สถาปัตยกรรมที่สร้างบนนั้น ผลงานทั้งสามและบทความเป็นผลงานของ Taumorrow เอง บางส่วนของวิธีการอยู่ระหว่างการขอสิทธิบัตร เอกสารเผยแพร่ภายใต้ <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: เปิดให้อ่าน ศึกษา ตรวจสอบ และเรียนรู้",
+ "papers.h2":"บทความ","papers.lead":"ตีพิมพ์พร้อม DOI ระบุวันที่ อ้างอิงได้ นี่คือแหล่งข้อมูลปฐมภูมิของทุกสิ่งในหน้านี้",
+ "learn.h2":"เรียนรู้และติดตาม","learn.lead":"ทุกอย่างทำงานได้ทันที หยิบข้อกำหนดหนึ่งชุด รันมัน แก้กฎหนึ่งข้อ แล้วดูคำตัดสินเปลี่ยนไป",
+ "l1.h":"ชุดบทเรียน Tau-Nomic","l1.p":"ข้อกำหนดที่อธิบายละเอียดสิบสองชุด จากกฎข้อแรกจนถึงเกมที่แก้ไขตนเอง พร้อมผลลัพธ์ที่คาดไว้ให้ตรวจสอบ",
+ "l2.h":"เกมที่ยุติธรรม ตั้งแต่ต้น","l2.p":"สมุดปกขาวเดือนธันวาคม 2025 และกรอบงานสาธารณะสำหรับเกมที่ไม่ต้องอาศัยความเชื่อใจ",
+ "l3.h":"ข่าวสาร","l3.p":"ผลลัพธ์ วันถ่ายทอดสด และบันทึกสั้น ๆ เมื่อเกิดขึ้น",
+ "l4.h":"ร่วมทีม","l4.p":"Taumorrow กำลังกลายเป็นทีมรอบวิธีการเดียว วิศวกร นักตรรกะ นักออกแบบเกม นักหมากรุก: หากคุณอยากสร้างสิ่งที่ตรวจสอบได้ เขียนถึงเรา",
+ "ft.sites":"เว็บไซต์","ft.legal":"ข้อมูลทางกฎหมาย · Impressum","ft.todo":"ชื่อและที่อยู่ไปรษณีย์ของผู้ดำเนินการ (§ 18 MStV) เจ้าของกรอกก่อนเปิดตัว","ft.credits":"เครดิต",
+ "ft.creditsText":"Tau Language © IDNI AG · Taumorrow 2024–2026 · “Taumorrow” ยื่นคำขอจดทะเบียนเครื่องหมายการค้าแล้ว · ไม่มีคุกกี้ ไม่มีการติดตาม เบราว์เซอร์นี้เก็บเพียงภาษาและโทนสี โฮสต์บน GitHub Pages (GitHub, Inc., สหรัฐอเมริกา) ซึ่งประมวลผลข้อมูลการเชื่อมต่อ เช่น ที่อยู่ IP เพื่อส่งมอบหน้าเว็บ"
+}};
+// English strings are the document defaults; capture them once for switching back.
+(function(){
+  const en={};
+  document.querySelectorAll('[data-i18n]').forEach(e=>en[e.dataset.i18n]=e.textContent);
+  document.querySelectorAll('[data-i18n-html]').forEach(e=>en[e.dataset.i18nHtml]=e.innerHTML);
+  I18N.en=en;
+  function apply(l){
+    const d=I18N[l]||I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.dataset.i18n;if(d[k]!=null)e.textContent=d[k];});
+    document.querySelectorAll('[data-i18n-html]').forEach(e=>{const k=e.dataset.i18nHtml;if(d[k]!=null)e.innerHTML=d[k];});
+    document.documentElement.lang=l;
+    document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
+    try{localStorage.setItem('taumorrow.lang',l);}catch(_){}
+  }
+  let l='en';
+  try{l=localStorage.getItem('taumorrow.lang')||((navigator.language||'en').slice(0,2));}catch(_){}
+  if(!I18N[l])l='en';
+  apply(l);
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang)));
+})();
+</script>
+<script>
+// Background: a wiring lattice. Nodes are small formulas, edges are dependencies, pulses are values travelling along the wiring.
+(function(){
+  const c=document.getElementById('net'); if(!c) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx=c.getContext('2d'); let W=0,H=0,DPR=1,nodes=[],edges=[],pulses=[],raf=0,last=0;
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+  function col(){return {ink:css('--ink'),cobalt:css('--cobalt'),chain:css('--chain'),live:css('--live')};}
+  function resize(){
+    DPR=Math.min(1.5,devicePixelRatio||1); W=innerWidth; H=innerHeight;
+    c.width=W*DPR; c.height=H*DPR; c.style.width=W+'px'; c.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0);
+    build();
+  }
+  function build(){
+    const n=Math.round(Math.min(90,Math.max(36,(W*H)/22000)));
+    nodes=[]; for(let i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.08,vy:(Math.random()-.5)*.08,r:1.2+Math.random()*1.6});
+    edges=[]; for(let i=0;i<n;i++){const d=[];for(let j=0;j<n;j++) if(i!==j) d.push([Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y),j]); d.sort((a,b)=>a[0]-b[0]); for(let k=0;k<2;k++){const j=d[k][1]; if(!edges.some(e=>(e[0]===j&&e[1]===i))) edges.push([i,j]);}}
+    pulses=[]; for(let k=0;k<Math.max(4,edges.length/9);k++) pulses.push({e:Math.floor(Math.random()*edges.length),t:Math.random(),s:.0005+Math.random()*.0008});
+  }
+  function draw(ts){
+    const k=col(); const dt=Math.min(40,ts-last||16); last=ts;
+    ctx.clearRect(0,0,W,H);
+    if(!reduce){ for(const p of nodes){ p.x+=p.vx*dt; p.y+=p.vy*dt; if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20; if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20; } }
+    ctx.lineWidth=1; ctx.strokeStyle=k.chain; ctx.globalAlpha=.28;
+    ctx.beginPath(); for(const [i,j] of edges){ const a=nodes[i],b=nodes[j]; if(Math.hypot(a.x-b.x,a.y-b.y)>Math.min(W,H)*.45) continue; ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);} ctx.stroke();
+    ctx.globalAlpha=.55; ctx.fillStyle=k.chain; for(const p of nodes){ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill(); }
+    const dark=(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
+    ctx.globalAlpha=dark?.9:.5;
+    for(const q of pulses){ const [i,j]=edges[q.e]; const a=nodes[i],b=nodes[j]; if(!reduce){ q.t+=q.s*dt; if(q.t>1){q.t=0;q.e=Math.floor(Math.random()*edges.length);} }
+      const x=a.x+(b.x-a.x)*q.t, y=a.y+(b.y-a.y)*q.t; const r=dark?9:7; const g=ctx.createRadialGradient(x,y,0,x,y,r); g.addColorStop(0,k.cobalt); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill(); }
+    ctx.globalAlpha=1;
+    if(!reduce && !document.hidden) raf=requestAnimationFrame(draw);
+  }
+  addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();raf=requestAnimationFrame(draw);});
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden && !reduce){cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);} });
+  resize(); raf=requestAnimationFrame(draw);
+  // colour scheme toggle: system → explicit light/dark, remembered in this browser
+  const root=document.documentElement, btn=document.getElementById('theme');
+  function cur(){return root.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
+  function setTheme(t){root.dataset.theme=t;try{localStorage.setItem('taumorrow.theme',t);}catch(_){}}
+  try{const t=localStorage.getItem('taumorrow.theme'); if(t==="dark"||t==="light") root.dataset.theme=t;}catch(_){}
+  if(btn) btn.addEventListener('click',()=>setTheme(cur()==='dark'?'light':'dark'));
+})();
+</script>
+</body>
+</html>

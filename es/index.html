@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taumorrow — Tau Chess, juegos demostrablemente justos, Nomic jugable</title>
+<meta name="description" content="Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador justos por construcción y un Nomic jugable. Artículos con DOI, en abierto desde 2024.">
+<link rel="canonical" href="https://taumorrow.com/es/">
+<link rel="alternate" hreflang="en" href="https://taumorrow.com/">
+<link rel="alternate" hreflang="de" href="https://taumorrow.com/de/">
+<link rel="alternate" hreflang="es" href="https://taumorrow.com/es/">
+<link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/">
+<link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/">
+<link rel="alternate" hreflang="th" href="https://taumorrow.com/th/">
+<link rel="alternate" hreflang="x-default" href="https://taumorrow.com/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f3f6">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Taumorrow">
+<meta property="og:url" content="https://taumorrow.com/es/">
+<meta property="og:title" content="Taumorrow — Tau Chess, juegos demostrablemente justos, Nomic jugable">
+<meta property="og:description" content="Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador justos por construcción y un Nomic jugable. Artículos con DOI, en abierto desde 2024.">
+<meta property="og:image" content="https://taumorrow.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Taumorrow — Decided, not guessed.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@tau_l0g1x">
+<meta name="twitter:title" content="Taumorrow — Tau Chess, juegos demostrablemente justos, Nomic jugable">
+<meta name="twitter:description" content="Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador justos por construcción y un Nomic jugable. Artículos con DOI, en abierto desde 2024.">
+<meta name="twitter:image" content="https://taumorrow.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://taumorrow.com/#org","name":"Taumorrow","url":"https://taumorrow.com/","logo":"https://taumorrow.com/icon-512.png","email":"hallo@taumorrow.com","sameAs":["https://x.com/tau_l0g1x","https://github.com/taumorrow"]},{"@type":"WebSite","@id":"https://taumorrow.com/#site","url":"https://taumorrow.com/","name":"Taumorrow","publisher":{"@id":"https://taumorrow.com/#org"},"inLanguage":["en","de","es","zh-Hans","ru","th"]},{"@type":"WebPage","url":"https://taumorrow.com/es/","name":"Taumorrow — Tau Chess, juegos demostrablemente justos, Nomic jugable","description":"Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador justos por construcción y un Nomic jugable. Artículos con DOI, en abierto desde 2024.","inLanguage":"es","isPartOf":{"@id":"https://taumorrow.com/#site"},"about":{"@id":"https://taumorrow.com/#org"}},{"@type":"ScholarlyArticle","name":"A Playable Nomic with a Provably Entrenched Core: Two-level self-amendment on a decidable substrate","identifier":"https://doi.org/10.5281/zenodo.22038825","url":"https://doi.org/10.5281/zenodo.22038825","datePublished":"2026-08-21","publisher":{"@type":"Organization","name":"Zenodo"}},{"@type":"ScholarlyArticle","name":"The Round as a Formula: Fair, transparent, real-time multiplayer games with the Tau language","identifier":"https://doi.org/10.5281/zenodo.23208762","url":"https://doi.org/10.5281/zenodo.23208762","datePublished":"2026-10-07","publisher":{"@type":"Organization","name":"Zenodo"}},{"@type":"ScholarlyArticle","name":"The Admitted Shortcut: Tree search over sub-specifications of a decidable logic, with Tau Chess as the worked example","identifier":"https://doi.org/10.5281/zenodo.23165449","url":"https://doi.org/10.5281/zenodo.23165449","datePublished":"2026-10-07","publisher":{"@type":"Organization","name":"Zenodo"}},{"@type":"ScholarlyArticle","name":"Learning under a Decided Gate: Changing a table that an admitted shortcut reads","identifier":"https://doi.org/10.5281/zenodo.23208550","url":"https://doi.org/10.5281/zenodo.23208550","datePublished":"2026-10-07","publisher":{"@type":"Organization","name":"Zenodo"}}]}</script>
+<script>try{const t=localStorage.getItem("taumorrow.theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t;}catch(_){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700&amp;family=Source+Sans+3:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600;700&amp;display=swap">
+<style>
+:root{
+  --paper:#f1f3f6;--paper-2:#e6e9ee;--ink:#0f141c;--ink-2:#3a4150;--mute:#6b7383;--rule:#cfd5de;
+  --cobalt:#2448c8;--cobalt-ink:#ffffff;--live:#b2651a;--chain:#9aa3b4;
+  --sq:#dfe4ec;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0d1117;--paper-2:#131923;--ink:#e9edf3;--ink-2:#c3cad6;--mute:#8a93a6;--rule:#273040;
+  --cobalt:#6f8dff;--cobalt-ink:#0b1020;--live:#e39a4a;--chain:#4b5567;--sq:#161d2a;}}
+:root[data-theme="dark"]{
+  --paper:#0d1117;--paper-2:#131923;--ink:#e9edf3;--ink-2:#c3cad6;--mute:#8a93a6;--rule:#273040;
+  --cobalt:#6f8dff;--cobalt-ink:#0b1020;--live:#e39a4a;--chain:#4b5567;--sq:#161d2a;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 clamp(15.5px,1.1vw + 11px,17px)/1.6 "Source Sans 3","Noto Sans SC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+:lang(zh) body,body:lang(zh){font-family:"Noto Sans SC","Source Sans 3",system-ui,sans-serif}
+html:lang(th) body{font-family:"Noto Sans Thai","Source Sans 3",system-ui,sans-serif;line-height:1.75}
+html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .link .v,html:lang(th) .step .n{font-family:"Noto Sans Thai","Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:0}
+html:lang(ru) h1,html:lang(ru) h2,html:lang(ru) h3,html:lang(ru) .link .v{font-family:"Bricolage Grotesque","Source Sans 3",system-ui,sans-serif;letter-spacing:-.01em}
+a{color:var(--cobalt)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+/* header */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{font:700 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand small{display:block;font:500 11px/1 "JetBrains Mono",monospace;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;margin-top:5px}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+nav a{color:var(--ink-2);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;gap:2px;border:1px solid var(--rule);border-radius:999px;padding:2px}
+.lang button,.lang a{text-decoration:none;border:0;background:transparent;color:var(--mute);font:500 12.5px/1 "JetBrains Mono",monospace;padding:7px 9px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"],.lang a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.theme{border:1px solid var(--rule);background:transparent;color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.theme:hover{background:var(--paper-2)}
+@media (max-width:720px){header .wrap{justify-content:flex-start}nav{width:100%;justify-content:space-between;gap:10px}nav a{font-size:14px}.lang button,.lang a{text-decoration:none;padding:7px 7px;font-size:12px}}
+@media (max-width:420px){nav a{font-size:13px}.brand{font-size:18px}}
+/* hero with board grid */
+.hero{position:relative;padding:72px 0 48px;overflow:hidden;border-bottom:1px solid var(--rule)}
+@media (max-width:720px){.hero{padding:44px 0 36px}.btns .btn{flex:1 1 100%;justify-content:center}.chain{margin-top:32px}}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--sq) 1px,transparent 1px),linear-gradient(90deg,var(--sq) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 85%);pointer-events:none}
+.hero .wrap{position:relative}
+.kicker{font:500 12.5px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 22px}
+h1{font:300 clamp(40px,7vw,86px)/.98 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.025em;margin:0 0 22px;max-width:14ch;text-wrap:balance}
+h1 b{font-weight:700}
+.sub{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:60ch;margin:0 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;border:1px solid transparent}
+.btn.primary{background:var(--cobalt);color:var(--cobalt-ink)}
+.btn.ghost{border-color:var(--rule);color:var(--ink)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 var(--live);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 55%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+/* chain strip */
+.chain{margin:48px 0 0;padding:18px 0 0;border-top:1px dashed var(--chain)}
+.chain .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+@media (max-width:900px){.chain .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.link::after{display:none}}
+@media (max-width:560px){.chain .row{grid-template-columns:1fr}}
+.link{min-width:0;padding:14px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;position:relative;overflow-wrap:anywhere}
+.link::after{content:"";position:absolute;right:-28px;top:50%;width:28px;height:1px;background:var(--chain)}
+.link:last-child::after{display:none}
+.link .k{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+.link .v{font:700 clamp(20px,1.9vw,26px)/1.1 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.02em;margin:0 0 6px;font-variant-numeric:tabular-nums}
+.link .d{font-size:14px;color:var(--ink-2);margin:0}
+.link .h{font:400 11.5px/1.4 "JetBrains Mono",monospace;color:var(--mute);margin:8px 0 0;word-break:break-all}
+/* sections */
+section{padding:64px 0;border-bottom:1px solid var(--rule)}
+@media (max-width:720px){section{padding:44px 0}}
+.sec-head{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:end;margin-bottom:30px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+.num{font:500 12.5px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+h2{font:500 clamp(28px,3.6vw,44px)/1.05 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.02em;margin:0}
+.lead{color:var(--ink-2);font-size:18px;margin:0;max-width:62ch}
+/* chapters */
+.chapter{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;padding:28px 0;border-top:1px solid var(--rule)}
+.chapter:first-of-type{border-top:0}
+@media (max-width:860px){.chapter{grid-template-columns:1fr}}
+.chapter h3{font:500 clamp(22px,2.4vw,30px)/1.15 "Bricolage Grotesque","Noto Sans SC",sans-serif;letter-spacing:-.015em;margin:0 0 10px}
+.chapter p{margin:0 0 14px;color:var(--ink-2)}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--paper-2)}
+@media (max-width:560px){.facts li{grid-template-columns:1fr;gap:4px}}
+.facts .v a{overflow-wrap:anywhere}
+.facts .k{font:500 11.5px/1.5 "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.facts .v{font-size:15px}
+.facts a{text-decoration:none;font-weight:600}
+.facts .doi{font:400 13px/1.5 "JetBrains Mono",monospace;color:var(--mute);display:block}
+/* how */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.step{padding:18px;border:1px solid var(--rule);border-radius:10px;background:var(--paper-2)}
+.step .n{font:700 34px/1 "Bricolage Grotesque",sans-serif;color:var(--cobalt);margin:0 0 10px;letter-spacing:-.03em}
+.step h4{margin:0 0 6px;font:600 17px/1.3 "Source Sans 3","Noto Sans SC",sans-serif}
+.step p{margin:0;color:var(--ink-2);font-size:15.5px}
+.credit{margin:28px 0 0;padding:18px 20px;border-left:3px solid var(--cobalt);color:var(--ink-2);max-width:78ch}
+/* learn */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{padding:18px;border:1px solid var(--rule);border-radius:10px;background:var(--paper-2)}
+.card h4{margin:0 0 6px;font:600 17px/1.3 "Source Sans 3","Noto Sans SC",sans-serif}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px}
+.card a{text-decoration:none;font-weight:600;font-size:15px}
+/* footer */
+footer{padding:40px 0 56px;color:var(--mute);font-size:14.5px}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;overflow-wrap:anywhere}
+footer h5{margin:0 0 8px;font:500 11.5px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+footer a{text-decoration:none}
+.todo{border:1px dashed var(--chain);border-radius:8px;padding:10px 12px;font-size:13.5px}
+.sr{position:absolute;left:-9999px}
+#net{position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;opacity:.9}
+main,header,footer{position:relative}
+.hero::before{display:none}
+</style>
+</head>
+<body>
+<canvas id="net" aria-hidden="true"></canvas>
+<header><div class="wrap">
+  <a class="brand" href="#top">Taumorrow<small>lógica que se puede comprobar</small></a>
+  <nav aria-label="Sections">
+    <a href="#works">Trabajos</a><a href="#how">Cómo</a><a href="#papers">Artículos</a><a href="#learn">Aprender</a>
+    <div class="lang" role="group" aria-label="Language"><a href="/" hreflang="en" lang="en">EN</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/es/" hreflang="es" lang="es" aria-current="page">ES</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/ru/" hreflang="ru" lang="ru">RU</a><a href="/th/" hreflang="th" lang="th">ไทย</a></div>
+    <button class="theme" id="theme" type="button" aria-label="Toggle colour scheme" title="Light / dark"><span aria-hidden="true">◐</span></button>
+  </nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <p class="kicker">Construido sobre el lenguaje Tau · Alemania · en abierto desde octubre de 2024</p>
+  <h1>Decidido,<br>no <b>adivinado.</b></h1>
+  <p class="sub">Taumorrow construye sistemas en los que cada paso es una prueba que cualquiera puede comprobar: un motor de ajedrez que no puede farolear, juegos multijugador justos por construcción y un juego de reglas cuyo núcleo ningún cambio de regla puede romper.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://tau-chess.mooo.info/"><span class="dot" aria-hidden="true"></span><span>Ver el motor de ajedrez</span></a>
+    <a class="btn ghost" href="#works">Los tres trabajos</a>
+  </div>
+  <div class="chain" aria-label="Record">
+    <div class="row">
+      <div class="link"><p class="k">Estreno</p><p class="v">29 : 0</p><p class="d">contra Claude Haiku, 29 partidas, público</p></div>
+      <div class="link"><p class="k">18 oct 2026</p><p class="v">9 : 1</p><p class="d">contra Claude Sonnet 5.5 (Thinking), 10 partidas, público</p></div>
+      <div class="link"><p class="k">Cada jugada</p><p class="v">un registro</p><p class="d">encadenado por hash, recalculable por cualquiera</p></div>
+      <div class="link"><p class="k">Datos de aprendizaje</p><p class="v">solo partidas propias</p><p class="d">las partidas contra modelos de lenguaje son medida, nunca lección</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="works"><div class="wrap">
+  <div class="sec-head"><div><p class="num">01</p><h2>Tres trabajos, un método</h2></div><p class="lead">Cada uno es un juego distinto. Todos corren sobre la misma idea: escribir las reglas como fórmulas que una máquina puede decidir, dejar que las decida para cada caso y guardar un registro que cualquiera puede recalcular.</p></div>
+
+  <article class="chapter">
+    <div><h3>Tau Chess — un motor de ajedrez que no puede farolear</h3>
+      <p>Un motor de ajedrez cuya cada jugada se decide por lógica, no la estima una red. Los atajos que aceleran la búsqueda solo se admiten con una prueba decidida de que nunca cambian el resultado. Juega en vivo y en público contra los grandes modelos de lenguaje y muestra su propia visión de la posición mientras piensa.</p>
+      <p>Lo que aprende, lo aprende de sus propias partidas, bajo una puerta que se decide antes de aceptar cualquier cambio. Las partidas contra modelos de lenguaje miden la fuerza, nunca son material de entrenamiento.</p></div>
+    <ul class="facts">
+      <li><span class="k">En vivo</span><span class="v"><a href="https://tau-chess.mooo.info/">tau-chess.mooo.info</a></span></li>
+      <li><span class="k">Artículo</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23165449">The Admitted Shortcut</a><span class="doi">doi:10.5281/zenodo.23165449 · 7 Oct 2026</span></span></li>
+      <li><span class="k">Artículo</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208550">Learning under a Decided Gate</a><span class="doi">doi:10.5281/zenodo.23208550 · 7 Oct 2026</span></span></li>
+      <li><span class="k">Estado</span><span class="v">Jugando. Resultados públicos arriba. Partes del método tienen patente pendiente.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
+    <div><h3>The Round as a Formula — juegos multijugador justos por construcción</h3>
+      <p>Loterías, botes compartidos, apuestas contra una banca, una mano de cartas, un movimiento en un tablero: juegos en los que varios actúan a la vez y un paso decide la ronda. Normalmente ese paso es un programa de un operador en el que hay que confiar. Aquí la ronda es una fórmula, cada parte puede recalcularla desde el registro, y el registro no se puede reescribir.</p>
+      <p>El método empezó como libro blanco en diciembre de 2025 y está publicado como artículo con las ejecuciones que un tercero puede repetir.</p></div>
+    <ul class="facts">
+      <li><span class="k">Artículo</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208762">The Round as a Formula</a><span class="doi">doi:10.5281/zenodo.23208762 · 7 Oct 2026</span></span></li>
+      <li><span class="k">Origen</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming">Provably Fair Multiplayer Gaming via Formal Verification</a><span class="doi">libro blanco, diciembre de 2025, repositorio público</span></span></li>
+      <li><span class="k">Estado</span><span class="v">Método publicado. Partes tienen patente pendiente.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
+    <div><h3>A Playable Nomic — el juego en que cambiar las reglas es el juego</h3>
+      <p>Nomic se juega desde 1982. Donde se ha informatizado, una máquina ejecuta las reglas que escriben los jugadores. Aquí la máquina también decide si un cambio de regla propuesto es legal respecto a la constitución, antes de que entre en vigor, y un núcleo atrincherado está probado contra toda secuencia de pasos legales.</p>
+      <p>Dos niveles de autoenmienda sobre un sustrato decidible: los jugadores cambian las reglas, las reglas no pueden cambiar lo que está probado.</p></div>
+    <ul class="facts">
+      <li><span class="k">Artículo</span><span class="v"><a href="https://doi.org/10.5281/zenodo.22038825">A Playable Nomic with a Provably Entrenched Core</a><span class="doi">doi:10.5281/zenodo.22038825 · 21 Aug 2026</span></span></li>
+      <li><span class="k">Avance</span><span class="v"><a href="https://github.com/taumorrow/tau-nomic-thegame">tau-nomic-thegame</a><span class="doi">un juego arbitrado por una prueba, avance</span></span></li>
+      <li><span class="k">Tutorial</span><span class="v"><a href="https://github.com/taumorrow/tau-lang-demos">Tau-Nomic tutorial series</a><span class="doi">doce especificaciones ejecutables, nomic_00 a nomic_11</span></span></li>
+    </ul>
+  </article>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="sec-head"><div><p class="num">02</p><h2>Cómo funciona, en cuatro pasos</h2></div><p class="lead">Los mismos cuatro pasos sostienen los tres trabajos. Nada aquí es un parámetro; los parámetros se quedan en el taller.</p></div>
+  <div class="steps">
+    <div class="step"><p class="n">1</p><h4>Fórmulas pequeñas, cada una decidida</h4><p>La lógica se divide por tarea en especificaciones pequeñas. El motor decide cada una para toda entrada posible; no hay “probablemente”.</p></div>
+    <div class="step"><p class="n">2</p><h4>Las dependencias se vuelven cableado</h4><p>La salida de una pieza es la entrada de otra. Una capa de transporte pasa valores y no decide nada por sí misma.</p></div>
+    <div class="step"><p class="n">3</p><h4>Los atajos necesitan una prueba</h4><p>Todo lo que acelera una búsqueda se admite solo con una afirmación decidida de que nunca cambia el resultado.</p></div>
+    <div class="step"><p class="n">4</p><h4>Cada paso deja un registro</h4><p>Cada partida es una cadena de hashes que se puede recalcular. Si la máquina se equivoca, se puede mostrar exactamente dónde.</p></div>
+  </div>
+  <p class="credit">El lenguaje Tau, su motor y sus lógicas son obra de <b>Ohad Asor</b> e <b>IDNI AG</b>. La arquitectura construida sobre él, los tres trabajos y los artículos son obra propia de Taumorrow. Partes del método tienen patente pendiente. Los materiales se publican bajo la <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: abiertos para leer, estudiar, verificar y aprender.</p>
+</div></section>
+
+<section id="papers"><div class="wrap">
+  <div class="sec-head"><div><p class="num">03</p><h2>Artículos</h2></div><p class="lead">Publicados con DOI, fechados, citables. Son las fuentes primarias de todo lo que hay en esta página.</p></div>
+  <ul class="facts">
+    <li><span class="k mono">2026-08-21</span><span class="v"><a href="https://doi.org/10.5281/zenodo.22038825">A Playable Nomic with a Provably Entrenched Core: Two-level self-amendment on a decidable substrate</a><span class="doi">doi:10.5281/zenodo.22038825</span></span></li>
+    <li><span class="k mono">2026-10-07</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208762">The Round as a Formula: Fair, transparent, real-time multiplayer games with the Tau language</a><span class="doi">doi:10.5281/zenodo.23208762</span></span></li>
+    <li><span class="k mono">2026-10-07</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23165449">The Admitted Shortcut: Tree search over sub-specifications of a decidable logic, with Tau Chess as the worked example</a><span class="doi">doi:10.5281/zenodo.23165449</span></span></li>
+    <li><span class="k mono">2026-10-07</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208550">Learning under a Decided Gate: Changing a table that an admitted shortcut reads</a><span class="doi">doi:10.5281/zenodo.23208550</span></span></li>
+  </ul>
+</div></section>
+
+<section id="learn"><div class="wrap">
+  <div class="sec-head"><div><p class="num">04</p><h2>Aprender y seguir</h2></div><p class="lead">Todo corre tal cual. Toma una especificación, ejecútala, cambia una regla y mira cómo cambia el veredicto.</p></div>
+  <div class="cards">
+    <div class="card"><h4>Serie de tutoriales Tau-Nomic</h4><p>Doce especificaciones trabajadas, desde la primera regla hasta un juego que se enmienda a sí mismo, con resultados esperados que puedes comprobar.</p><a href="https://github.com/taumorrow/tau-lang-demos">github.com/taumorrow/tau-lang-demos →</a></div>
+    <div class="card"><h4>Juegos justos, desde el principio</h4><p>El libro blanco de diciembre de 2025 y el marco público para juegos sin confianza.</p><a href="https://github.com/taumorrow/provably_fair_gaming">github.com/taumorrow/provably_fair_gaming →</a></div>
+    <div class="card"><h4>Novedades</h4><p>Resultados, fechas en vivo y notas breves según ocurren.</p><a href="https://x.com/tau_l0g1x">x.com/tau_l0g1x →</a></div>
+    <div class="card"><h4>Únete al equipo</h4><p>Taumorrow se está convirtiendo en un equipo en torno a un método. Ingenieros, lógicos, diseñadores de juegos, ajedrecistas: si quieres construir cosas que se puedan comprobar, escríbenos.</p><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com →</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h5>Sitios</h5><a href="https://taumorrow.com">taumorrow.com</a> · <a href="https://taumorrow.de">taumorrow.de</a> · <a href="https://taumorrow.eu">taumorrow.eu</a><br><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com</a></div>
+    <div><h5>Créditos</h5><span>Tau Language © IDNI AG · Taumorrow 2024–2026 · “Taumorrow” — marca solicitada · sin cookies ni rastreo; solo el idioma y el esquema de color se guardan en este navegador. Alojado en GitHub Pages (GitHub, Inc., EE. UU.), que procesa datos de conexión como direcciones IP para servir la página.</span></div>
+  </div>
+</div></footer>
+
+
+<script>
+// Background: a wiring lattice. Nodes are small formulas, edges are dependencies, pulses are values travelling along the wiring.
+(function(){
+  const c=document.getElementById('net'); if(!c) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx=c.getContext('2d'); let W=0,H=0,DPR=1,nodes=[],edges=[],pulses=[],raf=0,last=0;
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+  function col(){return {ink:css('--ink'),cobalt:css('--cobalt'),chain:css('--chain'),live:css('--live')};}
+  function resize(){
+    DPR=Math.min(1.5,devicePixelRatio||1); W=innerWidth; H=innerHeight;
+    c.width=W*DPR; c.height=H*DPR; c.style.width=W+'px'; c.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0);
+    build();
+  }
+  function build(){
+    const n=Math.round(Math.min(90,Math.max(36,(W*H)/22000)));
+    nodes=[]; for(let i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.08,vy:(Math.random()-.5)*.08,r:1.2+Math.random()*1.6});
+    edges=[]; for(let i=0;i<n;i++){const d=[];for(let j=0;j<n;j++) if(i!==j) d.push([Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y),j]); d.sort((a,b)=>a[0]-b[0]); for(let k=0;k<2;k++){const j=d[k][1]; if(!edges.some(e=>(e[0]===j&&e[1]===i))) edges.push([i,j]);}}
+    pulses=[]; for(let k=0;k<Math.max(4,edges.length/9);k++) pulses.push({e:Math.floor(Math.random()*edges.length),t:Math.random(),s:.0005+Math.random()*.0008});
+  }
+  function draw(ts){
+    const k=col(); const dt=Math.min(40,ts-last||16); last=ts;
+    ctx.clearRect(0,0,W,H);
+    if(!reduce){ for(const p of nodes){ p.x+=p.vx*dt; p.y+=p.vy*dt; if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20; if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20; } }
+    ctx.lineWidth=1; ctx.strokeStyle=k.chain; ctx.globalAlpha=.28;
+    ctx.beginPath(); for(const [i,j] of edges){ const a=nodes[i],b=nodes[j]; if(Math.hypot(a.x-b.x,a.y-b.y)>Math.min(W,H)*.45) continue; ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);} ctx.stroke();
+    ctx.globalAlpha=.55; ctx.fillStyle=k.chain; for(const p of nodes){ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill(); }
+    const dark=(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
+    ctx.globalAlpha=dark?.9:.5;
+    for(const q of pulses){ const [i,j]=edges[q.e]; const a=nodes[i],b=nodes[j]; if(!reduce){ q.t+=q.s*dt; if(q.t>1){q.t=0;q.e=Math.floor(Math.random()*edges.length);} }
+      const x=a.x+(b.x-a.x)*q.t, y=a.y+(b.y-a.y)*q.t; const r=dark?9:7; const g=ctx.createRadialGradient(x,y,0,x,y,r); g.addColorStop(0,k.cobalt); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill(); }
+    ctx.globalAlpha=1;
+    if(!reduce && !document.hidden) raf=requestAnimationFrame(draw);
+  }
+  addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();raf=requestAnimationFrame(draw);});
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden && !reduce){cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);} });
+  resize(); raf=requestAnimationFrame(draw);
+  // colour scheme toggle: system → explicit light/dark, remembered in this browser
+  const root=document.documentElement, btn=document.getElementById('theme');
+  function cur(){return root.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
+  function setTheme(t){root.dataset.theme=t;try{localStorage.setItem('taumorrow.theme',t);}catch(_){}}
+  try{const t=localStorage.getItem('taumorrow.theme'); if(t==="dark"||t==="light") root.dataset.theme=t;}catch(_){}
+  if(btn) btn.addEventListener('click',()=>setTheme(cur()==='dark'?'light':'dark'));
+})();
+</script>
+<script>document.querySelectorAll(".lang a").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("taumorrow.lang",a.getAttribute("lang").slice(0,2));}catch(_){}});});</script>
+</body>
+</html>
