@@ -174,7 +174,7 @@ main,header,footer{position:relative}
   <p class="sub">Taumorrow builds systems whose every step is a proof anyone can check: a chess engine that cannot bluff, multiplayer games that are fair by construction, and a game of rules whose core no rule change can break.</p>
   <div class="btns">
     <a class="btn primary" href="https://tau-chess.mooo.info/"><span class="dot" aria-hidden="true"></span><span>Watch the chess engine</span></a>
-    <a class="btn ghost" href="#works">The three works</a>
+    <a class="btn ghost" href="#works">The four works</a>
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
@@ -187,7 +187,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="works"><div class="wrap">
-  <div class="sec-head"><div><p class="num">01</p><h2>Three works, one method</h2></div><p class="lead">Each is a different game. Each runs on the same idea: write the rules as formulas a machine can decide, let the machine decide them for every case, and keep a record that anyone can recompute.</p></div>
+  <div class="sec-head"><div><p class="num">01</p><h2>Four works, one method</h2></div><p class="lead">Each is a different game. Each runs on the same idea: write the rules as formulas a machine can decide, let the machine decide them for every case, and keep a record that anyone can recompute.</p></div>
 
   <article class="chapter">
     <div><h3>Tau Chess — a chess engine that cannot bluff</h3>
@@ -213,6 +213,17 @@ main,header,footer{position:relative}
   </article>
 
   <article class="chapter">
+    <div><h3>AXIOM — the first game where the formula is the implementation</h3>
+      <p>A board game for two to four players with simultaneous moves, built in December 2025 as the first production demonstration of the method. The dice from all players’ commitments, the collisions, the state transitions and the winner are not computed by a program and then checked: each is a formula in Tau Language, and the formula is the implementation. The services around it only carry messages.</p>
+      <p>After every round, anyone can download the specification and the recorded inputs and re-synthesize them. The outputs match or the inconsistency shows. This is where the sentence “Tau is the engine, everything else delivers messages” comes from, and where the fair gaming work began.</p></div>
+    <ul class="facts">
+      <li><span class="k">Paper</span><span class="v"><a href="https://github.com/taumorrow/axiom/blob/master/AXIOM.md">AXIOM: Software Synthesis Through Mathematical Breakthrough</a><span class="doi">a production demonstration of Tau Language, 18 January 2026, public repository</span></span></li>
+      <li><span class="k">Origin</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming">Provably Fair Multiplayer Gaming via Formal Verification</a><span class="doi">whitepaper, December 2025, public repository</span></span></li>
+      <li><span class="k">Status</span><span class="v">Ran in production from December 2025; in maintenance since October 2026. Parts of the method are patent pending.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
     <div><h3>A Playable Nomic — the game where changing the rules is the game</h3>
       <p>Nomic has been played since 1982. Where it has been computerized, a machine executes the rules the players write. Here the machine also decides whether a proposed rule change is legal with respect to the constitution, before it takes effect, and an entrenched core is proven to survive every sequence of legal steps.</p>
       <p>Two levels of self-amendment on a decidable substrate: the players change the rules, the rules cannot change what was proven.</p></div>
@@ -225,14 +236,14 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div><p class="num">02</p><h2>How it works, in four steps</h2></div><p class="lead">The same four steps carry all three works. Nothing here is a parameter; the parameters stay in the workshop.</p></div>
+  <div class="sec-head"><div><p class="num">02</p><h2>How it works, in four steps</h2></div><p class="lead">The same four steps carry all four works. Nothing here is a parameter; the parameters stay in the workshop.</p></div>
   <div class="steps">
     <div class="step"><p class="n">1</p><h4>Small formulas, each decided</h4><p>The logic is split by task into small specifications. The engine decides each one for every possible input, so there is no “probably”.</p></div>
     <div class="step"><p class="n">2</p><h4>Dependencies become wiring</h4><p>The output of one piece is the input of another. A transport layer passes values along and decides nothing itself.</p></div>
     <div class="step"><p class="n">3</p><h4>Shortcuts need a proof</h4><p>Anything that makes a search faster is admitted only with a decided statement that it never changes the result.</p></div>
     <div class="step"><p class="n">4</p><h4>Every step leaves a record</h4><p>Each game is a hash-chained record you can recompute. If the machine is wrong, you can show exactly where.</p></div>
   </div>
-  <p class="credit">Tau Language, its engine and its logics are the work of <b>Ohad Asor</b> and <b>IDNI AG</b>. The architecture built on it, the three works and the papers are Taumorrow’s own work. Parts of the method are patent pending. The materials are published under the <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: open to read, study, verify and learn from.</p>
+  <p class="credit">Tau Language, its engine and its logics are the work of <b>Ohad Asor</b> and <b>IDNI AG</b>. The architecture built on it, the four works and the papers are Taumorrow’s own work. Parts of the method are patent pending. The materials are published under the <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: open to read, study, verify and learn from.</p>
 </div></section>
 
 <section id="papers"><div class="wrap">

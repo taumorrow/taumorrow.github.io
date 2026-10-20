@@ -173,7 +173,7 @@ main,header,footer{position:relative}
   <p class="sub">Taumorrow baut Systeme, deren jeder Schritt ein Beweis ist, den jeder prüfen kann: eine Schach-Engine, die nicht bluffen kann, Mehrspieler-Spiele, die durch Bauart fair sind, und ein Regelspiel, dessen Kern keine Regeländerung brechen kann.</p>
   <div class="btns">
     <a class="btn primary" href="https://tau-chess.mooo.info/"><span class="dot" aria-hidden="true"></span><span>Die Schach-Engine ansehen</span></a>
-    <a class="btn ghost" href="#works">Die drei Arbeiten</a>
+    <a class="btn ghost" href="#works">Die vier Arbeiten</a>
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
@@ -186,7 +186,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="works"><div class="wrap">
-  <div class="sec-head"><div><p class="num">01</p><h2>Drei Arbeiten, eine Methode</h2></div><p class="lead">Jede ist ein anderes Spiel. Alle laufen auf derselben Idee: die Regeln als Formeln schreiben, die eine Maschine entscheiden kann, sie für jeden Fall entscheiden lassen, und einen Datensatz führen, den jeder nachrechnen kann.</p></div>
+  <div class="sec-head"><div><p class="num">01</p><h2>Vier Arbeiten, eine Methode</h2></div><p class="lead">Jede ist ein anderes Spiel. Alle laufen auf derselben Idee: die Regeln als Formeln schreiben, die eine Maschine entscheiden kann, sie für jeden Fall entscheiden lassen, und einen Datensatz führen, den jeder nachrechnen kann.</p></div>
 
   <article class="chapter">
     <div><h3>Tau Chess — eine Schach-Engine, die nicht bluffen kann</h3>
@@ -212,6 +212,17 @@ main,header,footer{position:relative}
   </article>
 
   <article class="chapter">
+    <div><h3>AXIOM — das erste Spiel, in dem die Formel die Implementierung ist</h3>
+      <p>Ein Brettspiel für zwei bis vier Spieler mit gleichzeitigen Zügen, gebaut im Dezember 2025 als erste Produktions-Demonstration der Methode. Die Würfel aus den Festlegungen aller Spieler, die Kollisionen, die Zustandsübergänge und der Gewinner werden nicht von einem Programm berechnet und dann geprüft: Jedes davon ist eine Formel in der Tau-Sprache, und die Formel ist die Implementierung. Die Dienste darum herum tragen nur Nachrichten.</p>
+      <p>Nach jeder Runde kann jeder die Spezifikation und die aufgezeichneten Eingaben herunterladen und neu synthetisieren. Die Ausgaben stimmen überein, oder der Widerspruch zeigt sich. Hierher stammt der Satz „Tau is the engine, everything else delivers messages", und hier begann die Arbeit an fairen Spielen.</p></div>
+    <ul class="facts">
+      <li><span class="k">Schrift</span><span class="v"><a href="https://github.com/taumorrow/axiom/blob/master/AXIOM.md">AXIOM: Software Synthesis Through Mathematical Breakthrough</a><span class="doi">eine Produktions-Demonstration der Tau-Sprache, 18. Januar 2026, öffentliches Repository</span></span></li>
+      <li><span class="k">Ursprung</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming">Provably Fair Multiplayer Gaming via Formal Verification</a><span class="doi">Whitepaper, Dezember 2025, öffentliches Repository</span></span></li>
+      <li><span class="k">Stand</span><span class="v">Lief im Produktionsbetrieb seit Dezember 2025; seit Oktober 2026 in Wartung. Teile der Methode sind zum Patent angemeldet.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
     <div><h3>A Playable Nomic — das Spiel, in dem Regeln ändern das Spiel ist</h3>
       <p>Nomic wird seit 1982 gespielt. Wo es auf Rechner kam, führt eine Maschine die Regeln aus, die die Spieler schreiben. Hier entscheidet die Maschine auch, ob eine vorgeschlagene Regeländerung gegenüber der Verfassung zulässig ist, bevor sie gilt, und ein verankerter Kern ist bewiesen gegen jede Folge zulässiger Schritte.</p>
       <p>Zwei Ebenen der Selbständerung auf entscheidbarem Grund: die Spieler ändern die Regeln, die Regeln können nicht ändern, was bewiesen ist.</p></div>
@@ -224,14 +235,14 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div><p class="num">02</p><h2>So funktioniert es, in vier Schritten</h2></div><p class="lead">Dieselben vier Schritte tragen alle drei Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.</p></div>
+  <div class="sec-head"><div><p class="num">02</p><h2>So funktioniert es, in vier Schritten</h2></div><p class="lead">Dieselben vier Schritte tragen alle vier Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.</p></div>
   <div class="steps">
     <div class="step"><p class="n">1</p><h4>Kleine Formeln, jede entschieden</h4><p>Die Logik ist nach Aufgabe in kleine Spezifikationen zerlegt. Die Engine entscheidet jede für jede mögliche Eingabe, es gibt kein „wahrscheinlich“.</p></div>
     <div class="step"><p class="n">2</p><h4>Abhängigkeiten werden zur Verdrahtung</h4><p>Der Ausgang eines Teils ist der Eingang eines anderen. Eine Transportschicht reicht Werte weiter und entscheidet selbst nichts.</p></div>
     <div class="step"><p class="n">3</p><h4>Abkürzungen brauchen einen Beweis</h4><p>Was eine Suche schneller macht, wird nur mit einer entschiedenen Aussage zugelassen, dass es das Ergebnis nie ändert.</p></div>
     <div class="step"><p class="n">4</p><h4>Jeder Schritt hinterlässt einen Datensatz</h4><p>Jede Partie ist eine Hash-Kette, die man nachrechnen kann. Irrt die Maschine, kann man zeigen, wo genau.</p></div>
   </div>
-  <p class="credit">Die Tau-Sprache, ihre Engine und ihre Logiken sind das Werk von <b>Ohad Asor</b> und der <b>IDNI AG</b>. Die darauf gebaute Architektur, die drei Arbeiten und die Schriften sind Taumorrows eigene Arbeit. Teile der Methode sind zum Patent angemeldet. Die Materialien stehen unter der <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: offen zum Lesen, Studieren, Prüfen und Lernen.</p>
+  <p class="credit">Die Tau-Sprache, ihre Engine und ihre Logiken sind das Werk von <b>Ohad Asor</b> und der <b>IDNI AG</b>. Die darauf gebaute Architektur, die vier Arbeiten und die Schriften sind Taumorrows eigene Arbeit. Teile der Methode sind zum Patent angemeldet. Die Materialien stehen unter der <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: offen zum Lesen, Studieren, Prüfen und Lernen.</p>
 </div></section>
 
 <section id="papers"><div class="wrap">

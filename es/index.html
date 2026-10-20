@@ -173,7 +173,7 @@ main,header,footer{position:relative}
   <p class="sub">Taumorrow construye sistemas en los que cada paso es una prueba que cualquiera puede comprobar: un motor de ajedrez que no puede farolear, juegos multijugador justos por construcción y un juego de reglas cuyo núcleo ningún cambio de regla puede romper.</p>
   <div class="btns">
     <a class="btn primary" href="https://tau-chess.mooo.info/"><span class="dot" aria-hidden="true"></span><span>Ver el motor de ajedrez</span></a>
-    <a class="btn ghost" href="#works">Los tres trabajos</a>
+    <a class="btn ghost" href="#works">Los cuatro trabajos</a>
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
@@ -186,7 +186,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="works"><div class="wrap">
-  <div class="sec-head"><div><p class="num">01</p><h2>Tres trabajos, un método</h2></div><p class="lead">Cada uno es un juego distinto. Todos corren sobre la misma idea: escribir las reglas como fórmulas que una máquina puede decidir, dejar que las decida para cada caso y guardar un registro que cualquiera puede recalcular.</p></div>
+  <div class="sec-head"><div><p class="num">01</p><h2>Cuatro trabajos, un método</h2></div><p class="lead">Cada uno es un juego distinto. Todos corren sobre la misma idea: escribir las reglas como fórmulas que una máquina puede decidir, dejar que las decida para cada caso y guardar un registro que cualquiera puede recalcular.</p></div>
 
   <article class="chapter">
     <div><h3>Tau Chess — un motor de ajedrez que no puede farolear</h3>
@@ -212,6 +212,17 @@ main,header,footer{position:relative}
   </article>
 
   <article class="chapter">
+    <div><h3>AXIOM — el primer juego en que la fórmula es la implementación</h3>
+      <p>Un juego de tablero para dos a cuatro jugadores con movimientos simultáneos, construido en diciembre de 2025 como primera demostración en producción del método. Los dados a partir de los compromisos de todos los jugadores, las colisiones, las transiciones de estado y el ganador no los calcula un programa que luego se comprueba: cada uno es una fórmula en Tau Language, y la fórmula es la implementación. Los servicios de alrededor solo transportan mensajes.</p>
+      <p>Tras cada ronda, cualquiera puede descargar la especificación y las entradas registradas y volver a sintetizarlas. Las salidas coinciden o la inconsistencia se muestra. De aquí viene la frase «Tau is the engine, everything else delivers messages», y aquí empezó el trabajo sobre juegos justos.</p></div>
+    <ul class="facts">
+      <li><span class="k">Artículo</span><span class="v"><a href="https://github.com/taumorrow/axiom/blob/master/AXIOM.md">AXIOM: Software Synthesis Through Mathematical Breakthrough</a><span class="doi">una demostración en producción de Tau Language, 18 de enero de 2026, repositorio público</span></span></li>
+      <li><span class="k">Origen</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming">Provably Fair Multiplayer Gaming via Formal Verification</a><span class="doi">libro blanco, diciembre de 2025, repositorio público</span></span></li>
+      <li><span class="k">Estado</span><span class="v">En producción desde diciembre de 2025; en mantenimiento desde octubre de 2026. Partes del método tienen patente pendiente.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
     <div><h3>A Playable Nomic — el juego en que cambiar las reglas es el juego</h3>
       <p>Nomic se juega desde 1982. Donde se ha informatizado, una máquina ejecuta las reglas que escriben los jugadores. Aquí la máquina también decide si un cambio de regla propuesto es legal respecto a la constitución, antes de que entre en vigor, y un núcleo atrincherado está probado contra toda secuencia de pasos legales.</p>
       <p>Dos niveles de autoenmienda sobre un sustrato decidible: los jugadores cambian las reglas, las reglas no pueden cambiar lo que está probado.</p></div>
@@ -224,14 +235,14 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div><p class="num">02</p><h2>Cómo funciona, en cuatro pasos</h2></div><p class="lead">Los mismos cuatro pasos sostienen los tres trabajos. Nada aquí es un parámetro; los parámetros se quedan en el taller.</p></div>
+  <div class="sec-head"><div><p class="num">02</p><h2>Cómo funciona, en cuatro pasos</h2></div><p class="lead">Los mismos cuatro pasos sostienen los cuatro trabajos. Nada aquí es un parámetro; los parámetros se quedan en el taller.</p></div>
   <div class="steps">
     <div class="step"><p class="n">1</p><h4>Fórmulas pequeñas, cada una decidida</h4><p>La lógica se divide por tarea en especificaciones pequeñas. El motor decide cada una para toda entrada posible; no hay “probablemente”.</p></div>
     <div class="step"><p class="n">2</p><h4>Las dependencias se vuelven cableado</h4><p>La salida de una pieza es la entrada de otra. Una capa de transporte pasa valores y no decide nada por sí misma.</p></div>
     <div class="step"><p class="n">3</p><h4>Los atajos necesitan una prueba</h4><p>Todo lo que acelera una búsqueda se admite solo con una afirmación decidida de que nunca cambia el resultado.</p></div>
     <div class="step"><p class="n">4</p><h4>Cada paso deja un registro</h4><p>Cada partida es una cadena de hashes que se puede recalcular. Si la máquina se equivoca, se puede mostrar exactamente dónde.</p></div>
   </div>
-  <p class="credit">El lenguaje Tau, su motor y sus lógicas son obra de <b>Ohad Asor</b> e <b>IDNI AG</b>. La arquitectura construida sobre él, los tres trabajos y los artículos son obra propia de Taumorrow. Partes del método tienen patente pendiente. Los materiales se publican bajo la <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: abiertos para leer, estudiar, verificar y aprender.</p>
+  <p class="credit">El lenguaje Tau, su motor y sus lógicas son obra de <b>Ohad Asor</b> e <b>IDNI AG</b>. La arquitectura construida sobre él, los cuatro trabajos y los artículos son obra propia de Taumorrow. Partes del método tienen patente pendiente. Los materiales se publican bajo la <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: abiertos para leer, estudiar, verificar y aprender.</p>
 </div></section>
 
 <section id="papers"><div class="wrap">

@@ -141,7 +141,7 @@ main,header,footer{position:relative}
   <p class="sub" data-i18n="hero.sub">Taumorrow builds systems whose every step is a proof anyone can check: a chess engine that cannot bluff, multiplayer games that are fair by construction, and a game of rules whose core no rule change can break.</p>
   <div class="btns">
     <a class="btn primary" href="https://tau-chess.mooo.info/"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.cta1">Watch the chess engine</span></a>
-    <a class="btn ghost" href="#works" data-i18n="hero.cta2">The three works</a>
+    <a class="btn ghost" href="#works" data-i18n="hero.cta2">The four works</a>
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
@@ -154,7 +154,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="works"><div class="wrap">
-  <div class="sec-head"><div><p class="num">01</p><h2 data-i18n="works.h2">Three works, one method</h2></div><p class="lead" data-i18n="works.lead">Each is a different game. Each runs on the same idea: write the rules as formulas a machine can decide, let the machine decide them for every case, and keep a record that anyone can recompute.</p></div>
+  <div class="sec-head"><div><p class="num">01</p><h2 data-i18n="works.h2">Four works, one method</h2></div><p class="lead" data-i18n="works.lead">Each is a different game. Each runs on the same idea: write the rules as formulas a machine can decide, let the machine decide them for every case, and keep a record that anyone can recompute.</p></div>
 
   <article class="chapter">
     <div><h3 data-i18n="w1.h3">Tau Chess — a chess engine that cannot bluff</h3>
@@ -180,6 +180,17 @@ main,header,footer{position:relative}
   </article>
 
   <article class="chapter">
+    <div><h3 data-i18n="w4.h3">AXIOM — the first game where the formula is the implementation</h3>
+      <p data-i18n="w4.p1">A board game for two to four players with simultaneous moves, built in December 2025 as the first production demonstration of the method. The dice from all players’ commitments, the collisions, the state transitions and the winner are not computed by a program and then checked: each is a formula in Tau Language, and the formula is the implementation. The services around it only carry messages.</p>
+      <p data-i18n="w4.p2">After every round, anyone can download the specification and the recorded inputs and re-synthesize them. The outputs match or the inconsistency shows. This is where the sentence “Tau is the engine, everything else delivers messages” comes from, and where the fair gaming work began.</p></div>
+    <ul class="facts">
+      <li><span class="k" data-i18n="f.paper">Paper</span><span class="v"><a href="https://github.com/taumorrow/axiom/blob/master/AXIOM.md">AXIOM: Software Synthesis Through Mathematical Breakthrough</a><span class="doi" data-i18n="w4.paper">a production demonstration of Tau Language, 18 January 2026, public repository</span></span></li>
+      <li><span class="k" data-i18n="f.origin">Origin</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming">Provably Fair Multiplayer Gaming via Formal Verification</a><span class="doi" data-i18n="w2.origin">whitepaper, December 2025, public repository</span></span></li>
+      <li><span class="k" data-i18n="f.status">Status</span><span class="v" data-i18n="w4.status">Ran in production from December 2025; in maintenance since October 2026. Parts of the method are patent pending.</span></li>
+    </ul>
+  </article>
+
+  <article class="chapter">
     <div><h3 data-i18n="w3.h3">A Playable Nomic — the game where changing the rules is the game</h3>
       <p data-i18n="w3.p1">Nomic has been played since 1982. Where it has been computerized, a machine executes the rules the players write. Here the machine also decides whether a proposed rule change is legal with respect to the constitution, before it takes effect, and an entrenched core is proven to survive every sequence of legal steps.</p>
       <p data-i18n="w3.p2">Two levels of self-amendment on a decidable substrate: the players change the rules, the rules cannot change what was proven.</p></div>
@@ -192,14 +203,14 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div><p class="num">02</p><h2 data-i18n="how.h2">How it works, in four steps</h2></div><p class="lead" data-i18n="how.lead">The same four steps carry all three works. Nothing here is a parameter; the parameters stay in the workshop.</p></div>
+  <div class="sec-head"><div><p class="num">02</p><h2 data-i18n="how.h2">How it works, in four steps</h2></div><p class="lead" data-i18n="how.lead">The same four steps carry all four works. Nothing here is a parameter; the parameters stay in the workshop.</p></div>
   <div class="steps">
     <div class="step"><p class="n">1</p><h4 data-i18n="s1.h">Small formulas, each decided</h4><p data-i18n="s1.p">The logic is split by task into small specifications. The engine decides each one for every possible input, so there is no “probably”.</p></div>
     <div class="step"><p class="n">2</p><h4 data-i18n="s2.h">Dependencies become wiring</h4><p data-i18n="s2.p">The output of one piece is the input of another. A transport layer passes values along and decides nothing itself.</p></div>
     <div class="step"><p class="n">3</p><h4 data-i18n="s3.h">Shortcuts need a proof</h4><p data-i18n="s3.p">Anything that makes a search faster is admitted only with a decided statement that it never changes the result.</p></div>
     <div class="step"><p class="n">4</p><h4 data-i18n="s4.h">Every step leaves a record</h4><p data-i18n="s4.p">Each game is a hash-chained record you can recompute. If the machine is wrong, you can show exactly where.</p></div>
   </div>
-  <p class="credit" data-i18n-html="how.credit">Tau Language, its engine and its logics are the work of <b>Ohad Asor</b> and <b>IDNI AG</b>. The architecture built on it, the three works and the papers are Taumorrow’s own work. Parts of the method are patent pending. The materials are published under the <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: open to read, study, verify and learn from.</p>
+  <p class="credit" data-i18n-html="how.credit">Tau Language, its engine and its logics are the work of <b>Ohad Asor</b> and <b>IDNI AG</b>. The architecture built on it, the four works and the papers are Taumorrow’s own work. Parts of the method are patent pending. The materials are published under the <a href="https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE">Taumorrow Demos License</a>: open to read, study, verify and learn from.</p>
 </div></section>
 
 <section id="papers"><div class="wrap">
@@ -240,10 +251,10 @@ de:{
  "hero.kicker":"Gebaut auf der Tau-Sprache · Deutschland · öffentlich seit Oktober 2024",
  "hero.h1":"Entschieden,<br>nicht <b>geraten.</b>",
  "hero.sub":"Taumorrow baut Systeme, deren jeder Schritt ein Beweis ist, den jeder prüfen kann: eine Schach-Engine, die nicht bluffen kann, Mehrspieler-Spiele, die durch Bauart fair sind, und ein Regelspiel, dessen Kern keine Regeländerung brechen kann.",
- "hero.cta1":"Die Schach-Engine ansehen","hero.cta2":"Die drei Arbeiten",
+ "hero.cta1":"Die Schach-Engine ansehen","hero.cta2":"Die vier Arbeiten",
  "chain.k1":"Premiere","chain.d1":"gegen Claude Haiku, 29 Partien, öffentlich","chain.k2":"18. Okt. 2026","chain.d2":"gegen Claude Sonnet 5.5 (Thinking), 10 Partien, öffentlich",
  "chain.k3":"Jeder Zug","chain.v3":"ein Datensatz","chain.d3":"als Hash-Kette, von jedem nachrechenbar","chain.k4":"Lernstoff","chain.v4":"nur eigene Partien","chain.d4":"Partien gegen Sprachmodelle sind Maß, nie Lektion",
- "works.h2":"Drei Arbeiten, eine Methode","works.lead":"Jede ist ein anderes Spiel. Alle laufen auf derselben Idee: die Regeln als Formeln schreiben, die eine Maschine entscheiden kann, sie für jeden Fall entscheiden lassen, und einen Datensatz führen, den jeder nachrechnen kann.",
+ "works.h2":"Vier Arbeiten, eine Methode","works.lead":"Jede ist ein anderes Spiel. Alle laufen auf derselben Idee: die Regeln als Formeln schreiben, die eine Maschine entscheiden kann, sie für jeden Fall entscheiden lassen, und einen Datensatz führen, den jeder nachrechnen kann.",
  "w1.h3":"Tau Chess — eine Schach-Engine, die nicht bluffen kann",
  "w1.p1":"Eine Schach-Engine, deren jeder Zug durch Logik entschieden wird, nicht von einem Netz geschätzt. Abkürzungen, die die Suche schneller machen, werden nur mit einem entschiedenen Beweis zugelassen, dass sie das Ergebnis nie ändern. Sie spielt live und öffentlich gegen die großen Sprachmodelle und zeigt ihre eigene Sicht der Stellung, während sie denkt.",
  "w1.p2":"Was sie lernt, lernt sie aus eigenen Partien, unter einem Tor, das vor jeder Übernahme entschieden wird. Partien gegen Sprachmodelle sind Maß der Stärke, nie Lernstoff.",
@@ -253,16 +264,17 @@ de:{
  "w2.p1":"Lotterien, geteilte Töpfe, Wetten gegen eine Bank, ein Blatt Karten, ein Zug auf einem Brett: Spiele, in denen mehrere zugleich handeln und ein Schritt die Runde entscheidet. Meist ist dieser Schritt ein Programm eines Betreibers, dem man vertrauen muss. Hier ist die Runde eine Formel, jede Partei kann sie aus dem Datensatz nachrechnen, und der Datensatz lässt sich nicht umschreiben.",
  "w2.p2":"Die Methode begann als Whitepaper im Dezember 2025 und ist als Schrift veröffentlicht, mit den Ausführungen, die ein Dritter wiederholen kann.",
  "w2.origin":"Whitepaper, Dezember 2025, öffentliches Repository","w2.status":"Methode veröffentlicht. Teile sind zum Patent angemeldet.",
+ "w4.h3":"AXIOM — das erste Spiel, in dem die Formel die Implementierung ist","w4.p1":"Ein Brettspiel für zwei bis vier Spieler mit gleichzeitigen Zügen, gebaut im Dezember 2025 als erste Produktions-Demonstration der Methode. Die Würfel aus den Festlegungen aller Spieler, die Kollisionen, die Zustandsübergänge und der Gewinner werden nicht von einem Programm berechnet und dann geprüft: Jedes davon ist eine Formel in der Tau-Sprache, und die Formel ist die Implementierung. Die Dienste darum herum tragen nur Nachrichten.","w4.p2":"Nach jeder Runde kann jeder die Spezifikation und die aufgezeichneten Eingaben herunterladen und neu synthetisieren. Die Ausgaben stimmen überein, oder der Widerspruch zeigt sich. Hierher stammt der Satz „Tau is the engine, everything else delivers messages\", und hier begann die Arbeit an fairen Spielen.","w4.paper":"eine Produktions-Demonstration der Tau-Sprache, 18. Januar 2026, öffentliches Repository","w4.status":"Lief im Produktionsbetrieb seit Dezember 2025; seit Oktober 2026 in Wartung. Teile der Methode sind zum Patent angemeldet.",
  "w3.h3":"A Playable Nomic — das Spiel, in dem Regeln ändern das Spiel ist",
  "w3.p1":"Nomic wird seit 1982 gespielt. Wo es auf Rechner kam, führt eine Maschine die Regeln aus, die die Spieler schreiben. Hier entscheidet die Maschine auch, ob eine vorgeschlagene Regeländerung gegenüber der Verfassung zulässig ist, bevor sie gilt, und ein verankerter Kern ist bewiesen gegen jede Folge zulässiger Schritte.",
  "w3.p2":"Zwei Ebenen der Selbständerung auf entscheidbarem Grund: die Spieler ändern die Regeln, die Regeln können nicht ändern, was bewiesen ist.",
  "w3.code":"ein Spiel, das ein Beweis schiedsrichtert, Vorschau","w3.tut":"zwölf lauffähige Spezifikationen, nomic_00 bis nomic_11",
- "how.h2":"So funktioniert es, in vier Schritten","how.lead":"Dieselben vier Schritte tragen alle drei Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.",
+ "how.h2":"So funktioniert es, in vier Schritten","how.lead":"Dieselben vier Schritte tragen alle vier Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.",
  "s1.h":"Kleine Formeln, jede entschieden","s1.p":"Die Logik ist nach Aufgabe in kleine Spezifikationen zerlegt. Die Engine entscheidet jede für jede mögliche Eingabe, es gibt kein „wahrscheinlich“.",
  "s2.h":"Abhängigkeiten werden zur Verdrahtung","s2.p":"Der Ausgang eines Teils ist der Eingang eines anderen. Eine Transportschicht reicht Werte weiter und entscheidet selbst nichts.",
  "s3.h":"Abkürzungen brauchen einen Beweis","s3.p":"Was eine Suche schneller macht, wird nur mit einer entschiedenen Aussage zugelassen, dass es das Ergebnis nie ändert.",
  "s4.h":"Jeder Schritt hinterlässt einen Datensatz","s4.p":"Jede Partie ist eine Hash-Kette, die man nachrechnen kann. Irrt die Maschine, kann man zeigen, wo genau.",
- "how.credit":"Die Tau-Sprache, ihre Engine und ihre Logiken sind das Werk von <b>Ohad Asor</b> und der <b>IDNI AG</b>. Die darauf gebaute Architektur, die drei Arbeiten und die Schriften sind Taumorrows eigene Arbeit. Teile der Methode sind zum Patent angemeldet. Die Materialien stehen unter der <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: offen zum Lesen, Studieren, Prüfen und Lernen.",
+ "how.credit":"Die Tau-Sprache, ihre Engine und ihre Logiken sind das Werk von <b>Ohad Asor</b> und der <b>IDNI AG</b>. Die darauf gebaute Architektur, die vier Arbeiten und die Schriften sind Taumorrows eigene Arbeit. Teile der Methode sind zum Patent angemeldet. Die Materialien stehen unter der <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: offen zum Lesen, Studieren, Prüfen und Lernen.",
  "papers.h2":"Schriften","papers.lead":"Datiert und zitierbar: vier Schriften mit DOI und das Whitepaper vom Dezember 2025, mit dem die Arbeit an fairen Spielen begann. Das sind die Primärquellen für alles auf dieser Seite.",
  "learn.h2":"Lernen und folgen","learn.lead":"Alles läuft, wie es ist. Nimm eine Spezifikation, führe sie aus, ändere eine Regel, sieh zu, wie sich das Verdikt ändert.",
  "l1.h":"Tau-Nomic-Tutorial-Reihe","l1.p":"Zwölf ausgearbeitete Spezifikationen, von der ersten Regel bis zum selbständernden Spiel, mit erwarteten Ergebnissen zum Prüfen.",
@@ -277,10 +289,10 @@ es:{
  "hero.kicker":"Construido sobre el lenguaje Tau · Alemania · en abierto desde octubre de 2024",
  "hero.h1":"Decidido,<br>no <b>adivinado.</b>",
  "hero.sub":"Taumorrow construye sistemas en los que cada paso es una prueba que cualquiera puede comprobar: un motor de ajedrez que no puede farolear, juegos multijugador justos por construcción y un juego de reglas cuyo núcleo ningún cambio de regla puede romper.",
- "hero.cta1":"Ver el motor de ajedrez","hero.cta2":"Los tres trabajos",
+ "hero.cta1":"Ver el motor de ajedrez","hero.cta2":"Los cuatro trabajos",
  "chain.k1":"Estreno","chain.d1":"contra Claude Haiku, 29 partidas, público","chain.k2":"18 oct 2026","chain.d2":"contra Claude Sonnet 5.5 (Thinking), 10 partidas, público",
  "chain.k3":"Cada jugada","chain.v3":"un registro","chain.d3":"encadenado por hash, recalculable por cualquiera","chain.k4":"Datos de aprendizaje","chain.v4":"solo partidas propias","chain.d4":"las partidas contra modelos de lenguaje son medida, nunca lección",
- "works.h2":"Tres trabajos, un método","works.lead":"Cada uno es un juego distinto. Todos corren sobre la misma idea: escribir las reglas como fórmulas que una máquina puede decidir, dejar que las decida para cada caso y guardar un registro que cualquiera puede recalcular.",
+ "works.h2":"Cuatro trabajos, un método","works.lead":"Cada uno es un juego distinto. Todos corren sobre la misma idea: escribir las reglas como fórmulas que una máquina puede decidir, dejar que las decida para cada caso y guardar un registro que cualquiera puede recalcular.",
  "w1.h3":"Tau Chess — un motor de ajedrez que no puede farolear",
  "w1.p1":"Un motor de ajedrez cuya cada jugada se decide por lógica, no la estima una red. Los atajos que aceleran la búsqueda solo se admiten con una prueba decidida de que nunca cambian el resultado. Juega en vivo y en público contra los grandes modelos de lenguaje y muestra su propia visión de la posición mientras piensa.",
  "w1.p2":"Lo que aprende, lo aprende de sus propias partidas, bajo una puerta que se decide antes de aceptar cualquier cambio. Las partidas contra modelos de lenguaje miden la fuerza, nunca son material de entrenamiento.",
@@ -290,16 +302,17 @@ es:{
  "w2.p1":"Loterías, botes compartidos, apuestas contra una banca, una mano de cartas, un movimiento en un tablero: juegos en los que varios actúan a la vez y un paso decide la ronda. Normalmente ese paso es un programa de un operador en el que hay que confiar. Aquí la ronda es una fórmula, cada parte puede recalcularla desde el registro, y el registro no se puede reescribir.",
  "w2.p2":"El método empezó como libro blanco en diciembre de 2025 y está publicado como artículo con las ejecuciones que un tercero puede repetir.",
  "w2.origin":"libro blanco, diciembre de 2025, repositorio público","w2.status":"Método publicado. Partes tienen patente pendiente.",
+ "w4.h3":"AXIOM — el primer juego en que la fórmula es la implementación","w4.p1":"Un juego de tablero para dos a cuatro jugadores con movimientos simultáneos, construido en diciembre de 2025 como primera demostración en producción del método. Los dados a partir de los compromisos de todos los jugadores, las colisiones, las transiciones de estado y el ganador no los calcula un programa que luego se comprueba: cada uno es una fórmula en Tau Language, y la fórmula es la implementación. Los servicios de alrededor solo transportan mensajes.","w4.p2":"Tras cada ronda, cualquiera puede descargar la especificación y las entradas registradas y volver a sintetizarlas. Las salidas coinciden o la inconsistencia se muestra. De aquí viene la frase «Tau is the engine, everything else delivers messages», y aquí empezó el trabajo sobre juegos justos.","w4.paper":"una demostración en producción de Tau Language, 18 de enero de 2026, repositorio público","w4.status":"En producción desde diciembre de 2025; en mantenimiento desde octubre de 2026. Partes del método tienen patente pendiente.",
  "w3.h3":"A Playable Nomic — el juego en que cambiar las reglas es el juego",
  "w3.p1":"Nomic se juega desde 1982. Donde se ha informatizado, una máquina ejecuta las reglas que escriben los jugadores. Aquí la máquina también decide si un cambio de regla propuesto es legal respecto a la constitución, antes de que entre en vigor, y un núcleo atrincherado está probado contra toda secuencia de pasos legales.",
  "w3.p2":"Dos niveles de autoenmienda sobre un sustrato decidible: los jugadores cambian las reglas, las reglas no pueden cambiar lo que está probado.",
  "w3.code":"un juego arbitrado por una prueba, avance","w3.tut":"doce especificaciones ejecutables, nomic_00 a nomic_11",
- "how.h2":"Cómo funciona, en cuatro pasos","how.lead":"Los mismos cuatro pasos sostienen los tres trabajos. Nada aquí es un parámetro; los parámetros se quedan en el taller.",
+ "how.h2":"Cómo funciona, en cuatro pasos","how.lead":"Los mismos cuatro pasos sostienen los cuatro trabajos. Nada aquí es un parámetro; los parámetros se quedan en el taller.",
  "s1.h":"Fórmulas pequeñas, cada una decidida","s1.p":"La lógica se divide por tarea en especificaciones pequeñas. El motor decide cada una para toda entrada posible; no hay “probablemente”.",
  "s2.h":"Las dependencias se vuelven cableado","s2.p":"La salida de una pieza es la entrada de otra. Una capa de transporte pasa valores y no decide nada por sí misma.",
  "s3.h":"Los atajos necesitan una prueba","s3.p":"Todo lo que acelera una búsqueda se admite solo con una afirmación decidida de que nunca cambia el resultado.",
  "s4.h":"Cada paso deja un registro","s4.p":"Cada partida es una cadena de hashes que se puede recalcular. Si la máquina se equivoca, se puede mostrar exactamente dónde.",
- "how.credit":"El lenguaje Tau, su motor y sus lógicas son obra de <b>Ohad Asor</b> e <b>IDNI AG</b>. La arquitectura construida sobre él, los tres trabajos y los artículos son obra propia de Taumorrow. Partes del método tienen patente pendiente. Los materiales se publican bajo la <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: abiertos para leer, estudiar, verificar y aprender.",
+ "how.credit":"El lenguaje Tau, su motor y sus lógicas son obra de <b>Ohad Asor</b> e <b>IDNI AG</b>. La arquitectura construida sobre él, los cuatro trabajos y los artículos son obra propia de Taumorrow. Partes del método tienen patente pendiente. Los materiales se publican bajo la <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: abiertos para leer, estudiar, verificar y aprender.",
  "papers.h2":"Artículos","papers.lead":"Fechados y citables: cuatro artículos con DOI y el libro blanco de diciembre de 2025 con el que empezó el trabajo sobre juegos justos. Son las fuentes primarias de todo lo que hay en esta página.",
  "learn.h2":"Aprender y seguir","learn.lead":"Todo corre tal cual. Toma una especificación, ejecútala, cambia una regla y mira cómo cambia el veredicto.",
  "l1.h":"Serie de tutoriales Tau-Nomic","l1.p":"Doce especificaciones trabajadas, desde la primera regla hasta un juego que se enmienda a sí mismo, con resultados esperados que puedes comprobar.",
@@ -314,10 +327,10 @@ zh:{
  "hero.kicker":"基于 Tau 语言构建 · 德国 · 自 2024 年 10 月公开",
  "hero.h1":"是判定，<br>不是<b>猜测。</b>",
  "hero.sub":"Taumorrow 构建的系统，每一步都是任何人都可以验证的证明：一个不会虚张声势的国际象棋引擎、从构造上就公平的多人游戏，以及一个任何规则修改都无法破坏其核心的规则游戏。",
- "hero.cta1":"观看国际象棋引擎","hero.cta2":"三项作品",
+ "hero.cta1":"观看国际象棋引擎","hero.cta2":"四项作品",
  "chain.k1":"首演","chain.d1":"对阵 Claude Haiku，29 局，公开","chain.k2":"2026 年 10 月 18 日","chain.d2":"对阵 Claude Sonnet 5.5（Thinking），10 局，公开",
  "chain.k3":"每一步","chain.v3":"一条记录","chain.d3":"哈希链接，任何人都可重新计算","chain.k4":"训练数据","chain.v4":"仅限自己的对局","chain.d4":"与语言模型的对局只是度量，从不是教材",
- "works.h2":"三项作品，一种方法","works.lead":"每一项都是不同的游戏，却基于同一个思想：把规则写成机器可以判定的公式，让机器对每一种情况做出判定，并保留任何人都能重新计算的记录。",
+ "works.h2":"四项作品，一种方法","works.lead":"每一项都是不同的游戏，却基于同一个思想：把规则写成机器可以判定的公式，让机器对每一种情况做出判定，并保留任何人都能重新计算的记录。",
  "w1.h3":"Tau Chess —— 不会虚张声势的国际象棋引擎",
  "w1.p1":"这个引擎的每一步都由逻辑判定，而不是由网络估计。让搜索更快的捷径，只有在有判定证明表明它们绝不改变结果时才被采纳。它公开地与前沿语言模型实时对弈，并在思考时展示自己对局面的判断。",
  "w1.p2":"它所学的一切都来自自己的对局，并经过在任何改动被接受之前就已判定的闸门。与语言模型的对局是实力的度量，从不是训练材料。",
@@ -327,16 +340,17 @@ zh:{
  "w2.p1":"彩票、共享奖池、对庄下注、一手牌、棋盘上的一步：多方同时行动、由一步决定整轮的游戏。通常这一步是运营者运行的程序，你只能信任它。在这里，这一轮是一个公式，每一方都能从记录中重新计算它，而记录无法被改写。",
  "w2.p2":"该方法始于 2025 年 12 月的白皮书，现已作为论文发表，附有第三方可以重复的执行过程。",
  "w2.origin":"白皮书，2025 年 12 月，公开仓库","w2.status":"方法已发表。部分内容已申请专利。",
+ "w4.h3":"AXIOM —— 第一个“公式即实现”的游戏","w4.p1":"一款二至四人、同时行动的桌面游戏，于 2025 年 12 月建成，是该方法的第一次生产环境演示。由全体玩家的承诺生成的骰子、碰撞、状态转移和胜者，都不是先由程序计算再加以检查：每一项都是一条 Tau 语言公式，公式本身就是实现。周围的服务只负责传递消息。","w4.p2":"每一轮结束后，任何人都可以下载规范和记录下来的输入并重新综合。输出要么一致，要么暴露出不一致。“Tau is the engine, everything else delivers messages”这句话由此而来，公平游戏的工作也从这里开始。","w4.paper":"Tau 语言的生产环境演示，2026 年 1 月 18 日，公开仓库","w4.status":"自 2025 年 12 月起在生产环境运行；自 2026 年 10 月起维护中。方法的部分内容已申请专利。",
  "w3.h3":"A Playable Nomic —— 改规则本身就是游戏的游戏",
  "w3.p1":"Nomic 自 1982 年起就有人在玩。在它被计算机化的地方，机器执行玩家编写的规则。在这里，机器还会在规则修改生效之前，判定它相对于宪章是否合法；并且一个被固化的核心已被证明能经受住任何合法步骤序列。",
  "w3.p2":"在可判定基底上的两级自我修订：玩家修改规则，规则无法改变已被证明的东西。",
  "w3.code":"由证明裁判的游戏，抢先预览","w3.tut":"十二个可运行的规范，nomic_00 至 nomic_11",
- "how.h2":"原理：四个步骤","how.lead":"同样的四个步骤支撑着全部三项作品。这里没有任何参数；参数留在工坊里。",
+ "how.h2":"原理：四个步骤","how.lead":"同样的四个步骤支撑着全部四项作品。这里没有任何参数；参数留在工坊里。",
  "s1.h":"小公式，各自判定","s1.p":"逻辑按任务拆分成小规范。引擎对每一种可能输入判定每一个规范，没有“大概”。",
  "s2.h":"依赖关系成为接线","s2.p":"一个部件的输出是另一个部件的输入。传输层只传递数值，自己不做任何判定。",
  "s3.h":"捷径需要证明","s3.p":"任何让搜索更快的东西，只有在有判定陈述表明它绝不改变结果时才被采纳。",
  "s4.h":"每一步都留下记录","s4.p":"每一局都是可以重新计算的哈希链。如果机器出错，你可以指出错在哪里。",
- "how.credit":"Tau 语言及其引擎与逻辑是 <b>Ohad Asor</b> 和 <b>IDNI AG</b> 的成果。建于其上的架构、三项作品和论文是 Taumorrow 自己的工作。方法的部分内容已申请专利。材料以 <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a> 发布：开放阅读、研究、验证和学习。",
+ "how.credit":"Tau 语言及其引擎与逻辑是 <b>Ohad Asor</b> 和 <b>IDNI AG</b> 的成果。建于其上的架构、四项作品和论文是 Taumorrow 自己的工作。方法的部分内容已申请专利。材料以 <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a> 发布：开放阅读、研究、验证和学习。",
  "papers.h2":"论文","papers.lead":"有日期、可引用：四篇带 DOI 的论文，以及 2025 年 12 月的白皮书，公平游戏的工作由此开始。它们是本页一切内容的原始来源。",
  "learn.h2":"学习与关注","learn.lead":"一切都可直接运行。取一个规范，运行它，改一条规则，看裁决如何改变。",
  "l1.h":"Tau-Nomic 教程系列","l1.p":"十二个完整示例，从第一条规则到自我修订的游戏，附有可核对的预期结果。",
@@ -351,10 +365,10 @@ ru:{
  "hero.kicker":"Построено на языке Tau · Германия · открыто с октября 2024",
  "hero.h1":"Решено,<br>а не <b>угадано.</b>",
  "hero.sub":"Taumorrow строит системы, в которых каждый шаг — доказательство, которое может проверить любой: шахматный движок, который не умеет блефовать, многопользовательские игры, честные по построению, и игра правил, ядро которой не сломает ни одно изменение правил.",
- "hero.cta1":"Смотреть шахматный движок","hero.cta2":"Три работы",
+ "hero.cta1":"Смотреть шахматный движок","hero.cta2":"Четыре работы",
  "chain.k1":"Премьера","chain.d1":"против Claude Haiku, 29 партий, публично","chain.k2":"18 окт. 2026","chain.d2":"против Claude Sonnet 5.5 (Thinking), 10 партий, публично",
  "chain.k3":"Каждый ход","chain.v3":"запись","chain.d3":"в хеш-цепочке, пересчитать может любой","chain.k4":"Данные для обучения","chain.v4":"только свои партии","chain.d4":"партии против языковых моделей — мера, а не урок",
- "works.h2":"Три работы, один метод","works.lead":"Каждая — другая игра. Все держатся на одной идее: записать правила формулами, которые машина способна решить, дать ей решить их для каждого случая и вести запись, которую любой может пересчитать.",
+ "works.h2":"Четыре работы, один метод","works.lead":"Каждая — другая игра. Все держатся на одной идее: записать правила формулами, которые машина способна решить, дать ей решить их для каждого случая и вести запись, которую любой может пересчитать.",
  "w1.h3":"Tau Chess — шахматный движок, который не умеет блефовать",
  "w1.p1":"Шахматный движок, каждый ход которого решает логика, а не оценивает сеть. Сокращения, ускоряющие поиск, допускаются только с решённым доказательством того, что они никогда не меняют результат. Он играет вживую и публично против передовых языковых моделей и показывает собственный взгляд на позицию, пока думает.",
  "w1.p2":"Чему он учится, он учится на собственных партиях, через затвор, который решается до принятия любого изменения. Партии против языковых моделей — мера силы, а не учебный материал.",
@@ -364,16 +378,17 @@ ru:{
  "w2.p1":"Лотереи, общие банки, ставки против банка, рука карт, ход на доске: игры, где несколько сторон действуют одновременно и один шаг решает раунд. Обычно этот шаг — программа оператора, которому приходится доверять. Здесь раунд — формула, каждая сторона может пересчитать её по записи, а запись нельзя переписать.",
  "w2.p2":"Метод начался как белая книга в декабре 2025 года и опубликован как статья с исполнениями, которые третья сторона может повторить.",
  "w2.origin":"белая книга, декабрь 2025, открытый репозиторий","w2.status":"Метод опубликован. Части — в процессе патентования.",
+ "w4.h3":"AXIOM — первая игра, в которой формула и есть реализация","w4.p1":"Настольная игра для двух–четырёх игроков с одновременными ходами, построенная в декабре 2025 года как первая демонстрация метода в продакшене. Кости из обязательств всех игроков, столкновения, переходы состояний и победитель не вычисляются программой с последующей проверкой: каждое из этого — формула на языке Tau, и формула и есть реализация. Сервисы вокруг лишь передают сообщения.","w4.p2":"После каждого раунда любой может скачать спецификацию и записанные входы и синтезировать их заново. Выходы совпадают — или проявляется несоответствие. Отсюда фраза «Tau is the engine, everything else delivers messages», и отсюда началась работа над честными играми.","w4.paper":"демонстрация языка Tau в продакшене, 18 января 2026, открытый репозиторий","w4.status":"Работала в продакшене с декабря 2025 года; с октября 2026 года на обслуживании. Части метода — в процессе патентования.",
  "w3.h3":"A Playable Nomic — игра, в которой менять правила и есть игра",
  "w3.p1":"В Nomic играют с 1982 года. Там, где его переносили на компьютер, машина исполняет правила, написанные игроками. Здесь машина также решает, законно ли предложенное изменение правил относительно конституции, прежде чем оно вступит в силу, а закреплённое ядро доказанно переживает любую последовательность законных шагов.",
  "w3.p2":"Два уровня самоизменения на разрешимом основании: игроки меняют правила, правила не могут изменить доказанное.",
  "w3.code":"игра, которую судит доказательство, превью","w3.tut":"двенадцать запускаемых спецификаций, nomic_00 — nomic_11",
- "how.h2":"Как это работает: четыре шага","how.lead":"Одни и те же четыре шага несут все три работы. Здесь нет ни одного параметра; параметры остаются в мастерской.",
+ "how.h2":"Как это работает: четыре шага","how.lead":"Одни и те же четыре шага несут все четыре работы. Здесь нет ни одного параметра; параметры остаются в мастерской.",
  "s1.h":"Маленькие формулы, каждая решена","s1.p":"Логика разбита по задачам на маленькие спецификации. Движок решает каждую для любого возможного входа, никакого «вероятно».",
  "s2.h":"Зависимости становятся проводкой","s2.p":"Выход одной части — вход другой. Транспортный слой передаёт значения и сам ничего не решает.",
  "s3.h":"Сокращениям нужно доказательство","s3.p":"Всё, что ускоряет поиск, допускается только с решённым утверждением, что это никогда не меняет результат.",
  "s4.h":"Каждый шаг оставляет запись","s4.p":"Каждая партия — хеш-цепочка, которую можно пересчитать. Если машина ошиблась, можно показать, где именно.",
- "how.credit":"Язык Tau, его движок и его логики — работа <b>Охада Асора</b> и <b>IDNI AG</b>. Построенная на нём архитектура, три работы и статьи — собственная работа Taumorrow. Части метода находятся в процессе патентования. Материалы опубликованы под <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: открыты для чтения, изучения, проверки и обучения.",
+ "how.credit":"Язык Tau, его движок и его логики — работа <b>Охада Асора</b> и <b>IDNI AG</b>. Построенная на нём архитектура, четыре работы и статьи — собственная работа Taumorrow. Части метода находятся в процессе патентования. Материалы опубликованы под <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: открыты для чтения, изучения, проверки и обучения.",
  "papers.h2":"Статьи","papers.lead":"Датированы и цитируемы: четыре статьи с DOI ибелая книга декабря 2025 года, с которой началась работа над честными играми. Это первоисточники всего, что есть на этой странице.",
  "learn.h2":"Учиться и следить","learn.lead":"Всё работает как есть. Возьмите спецификацию, запустите её, измените правило и смотрите, как меняется вердикт.",
  "l1.h":"Серия учебников Tau-Nomic","l1.p":"Двенадцать разобранных спецификаций — от первого правила до самоизменяющейся игры, с ожидаемыми результатами для проверки.",
@@ -388,10 +403,10 @@ th:{
  "hero.kicker":"สร้างบนภาษา Tau · เยอรมนี · เปิดเผยสู่สาธารณะตั้งแต่ตุลาคม 2024",
  "hero.h1":"ตัดสินแล้ว<br>ไม่ใช่<b>การเดา</b>",
  "hero.sub":"Taumorrow สร้างระบบที่ทุกขั้นตอนคือข้อพิสูจน์ที่ใครก็ตรวจสอบได้: เอนจินหมากรุกที่ไม่อาจบลัฟ เกมหลายผู้เล่นที่ยุติธรรมโดยโครงสร้าง และเกมแห่งกฎที่ไม่มีการแก้กฎใดทำลายแกนกลางได้",
- "hero.cta1":"ชมเอนจินหมากรุก","hero.cta2":"ผลงานทั้งสาม",
+ "hero.cta1":"ชมเอนจินหมากรุก","hero.cta2":"ผลงานทั้งสี่",
  "chain.k1":"รอบปฐมทัศน์","chain.d1":"พบ Claude Haiku, 29 กระดาน, สาธารณะ","chain.k2":"18 ต.ค. 2026","chain.d2":"พบ Claude Sonnet 5.5 (Thinking), 10 กระดาน, สาธารณะ",
  "chain.k3":"ทุกการเดิน","chain.v3":"หนึ่งบันทึก","chain.d3":"เชื่อมด้วยแฮช ใครก็คำนวณซ้ำได้","chain.k4":"ข้อมูลฝึก","chain.v4":"เฉพาะเกมของตัวเอง","chain.d4":"เกมกับโมเดลภาษาคือมาตรวัด ไม่ใช่บทเรียน",
- "works.h2":"สามผลงาน หนึ่งวิธีการ","works.lead":"แต่ละชิ้นเป็นเกมที่ต่างกัน แต่ทั้งหมดอยู่บนแนวคิดเดียว: เขียนกฎเป็นสูตรที่เครื่องตัดสินได้ ให้เครื่องตัดสินทุกกรณี และเก็บบันทึกที่ใครก็คำนวณซ้ำได้",
+ "works.h2":"สี่ผลงาน หนึ่งวิธีการ","works.lead":"แต่ละชิ้นเป็นเกมที่ต่างกัน แต่ทั้งหมดอยู่บนแนวคิดเดียว: เขียนกฎเป็นสูตรที่เครื่องตัดสินได้ ให้เครื่องตัดสินทุกกรณี และเก็บบันทึกที่ใครก็คำนวณซ้ำได้",
  "w1.h3":"Tau Chess — เอนจินหมากรุกที่ไม่อาจบลัฟ",
  "w1.p1":"เอนจินหมากรุกที่ทุกการเดินถูกตัดสินด้วยตรรกะ ไม่ใช่การประมาณจากโครงข่าย ทางลัดที่ทำให้การค้นหาเร็วขึ้นจะได้รับอนุญาตก็ต่อเมื่อมีข้อพิสูจน์ที่ตัดสินแล้วว่าไม่เคยเปลี่ยนผลลัพธ์ มันเล่นสดและเปิดเผยกับโมเดลภาษาชั้นนำ และแสดงมุมมองของตัวเองต่อตำแหน่งขณะคิด",
  "w1.p2":"สิ่งที่มันเรียนรู้ มาจากเกมของตัวเองเท่านั้น ผ่านประตูที่ตัดสินก่อนรับการเปลี่ยนแปลงใด ๆ เกมกับโมเดลภาษาคือมาตรวัดความแข็งแกร่ง ไม่ใช่ข้อมูลฝึก",
@@ -401,16 +416,17 @@ th:{
  "w2.p1":"ลอตเตอรี กองกลางที่แบ่งกัน การเดิมพันกับเจ้ามือ ไพ่หนึ่งมือ การเดินบนกระดาน: เกมที่หลายฝ่ายกระทำพร้อมกันและหนึ่งขั้นตอนตัดสินทั้งรอบ โดยปกติขั้นตอนนั้นคือโปรแกรมของผู้ดำเนินการที่คุณต้องเชื่อใจ ที่นี่รอบคือสูตร ทุกฝ่ายคำนวณซ้ำได้จากบันทึก และบันทึกไม่อาจถูกเขียนใหม่",
  "w2.p2":"วิธีการนี้เริ่มจากสมุดปกขาวในเดือนธันวาคม 2025 และตีพิมพ์เป็นบทความพร้อมการดำเนินการที่บุคคลที่สามทำซ้ำได้",
  "w2.origin":"สมุดปกขาว ธันวาคม 2025 คลังสาธารณะ","w2.status":"ตีพิมพ์วิธีการแล้ว บางส่วนอยู่ระหว่างการขอสิทธิบัตร",
+ "w4.h3":"AXIOM — เกมแรกที่สูตรคือการอิมพลีเมนต์","w4.p1":"เกมกระดานสำหรับผู้เล่นสองถึงสี่คน เดินพร้อมกัน สร้างขึ้นในเดือนธันวาคม 2025 เป็นการสาธิตวิธีการนี้ในระบบจริงครั้งแรก ลูกเต๋าที่ได้จากคำมั่นของผู้เล่นทุกคน การชนกัน การเปลี่ยนสถานะ และผู้ชนะ ไม่ได้ถูกคำนวณโดยโปรแกรมแล้วค่อยตรวจสอบ: แต่ละอย่างคือสูตรในภาษา Tau และสูตรนั้นเองคือการอิมพลีเมนต์ บริการรอบข้างทำหน้าที่เพียงส่งข้อความ","w4.p2":"หลังจบแต่ละรอบ ใครก็สามารถดาวน์โหลดข้อกำหนดและอินพุตที่บันทึกไว้ แล้วสังเคราะห์ใหม่ได้ ผลลัพธ์จะตรงกัน หรือไม่เช่นนั้นความไม่สอดคล้องก็จะปรากฏ ประโยค “Tau is the engine, everything else delivers messages” มีที่มาจากตรงนี้ และงานเรื่องเกมที่ยุติธรรมก็เริ่มต้นจากตรงนี้","w4.paper":"การสาธิตภาษา Tau ในระบบจริง 18 มกราคม 2026 คลังสาธารณะ","w4.status":"ทำงานในระบบจริงตั้งแต่ธันวาคม 2025 อยู่ระหว่างการบำรุงรักษาตั้งแต่ตุลาคม 2026 บางส่วนของวิธีการอยู่ระหว่างการขอสิทธิบัตร",
  "w3.h3":"A Playable Nomic — เกมที่การแก้กฎคือตัวเกม",
  "w3.p1":"Nomic ถูกเล่นมาตั้งแต่ปี 1982 เมื่อถูกนำขึ้นคอมพิวเตอร์ เครื่องจะดำเนินกฎที่ผู้เล่นเขียน ที่นี่เครื่องยังตัดสินด้วยว่าการแก้กฎที่เสนอชอบด้วยรัฐธรรมนูญหรือไม่ ก่อนที่จะมีผล และแกนกลางที่ตรึงไว้ได้รับการพิสูจน์ว่ารอดจากทุกลำดับขั้นตอนที่ชอบด้วยกฎ",
  "w3.p2":"การแก้ไขตนเองสองระดับบนฐานที่ตัดสินได้: ผู้เล่นเปลี่ยนกฎ แต่กฎไม่อาจเปลี่ยนสิ่งที่พิสูจน์แล้ว",
  "w3.code":"เกมที่ตัดสินโดยข้อพิสูจน์ ตัวอย่างล่วงหน้า","w3.tut":"ข้อกำหนดที่รันได้สิบสองชุด nomic_00 ถึง nomic_11",
- "how.h2":"วิธีการทำงาน ในสี่ขั้นตอน","how.lead":"สี่ขั้นตอนเดียวกันรองรับผลงานทั้งสาม ไม่มีสิ่งใดในที่นี้เป็นพารามิเตอร์ พารามิเตอร์อยู่ในโรงงาน",
+ "how.h2":"วิธีการทำงาน ในสี่ขั้นตอน","how.lead":"สี่ขั้นตอนเดียวกันรองรับผลงานทั้งสี่ ไม่มีสิ่งใดในที่นี้เป็นพารามิเตอร์ พารามิเตอร์อยู่ในโรงงาน",
  "s1.h":"สูตรเล็ก ๆ แต่ละสูตรตัดสินแล้ว","s1.p":"ตรรกะถูกแบ่งตามงานเป็นข้อกำหนดเล็ก ๆ เอนจินตัดสินแต่ละข้อสำหรับทุกอินพุตที่เป็นไปได้ ไม่มีคำว่า “น่าจะ”",
  "s2.h":"การพึ่งพากลายเป็นสายเชื่อม","s2.p":"เอาต์พุตของชิ้นหนึ่งคืออินพุตของอีกชิ้น ชั้นขนส่งส่งต่อค่าและไม่ตัดสินสิ่งใดเอง",
  "s3.h":"ทางลัดต้องมีข้อพิสูจน์","s3.p":"สิ่งใดที่ทำให้การค้นหาเร็วขึ้นจะได้รับอนุญาตก็ต่อเมื่อมีข้อความที่ตัดสินแล้วว่าไม่เคยเปลี่ยนผลลัพธ์",
  "s4.h":"ทุกขั้นตอนทิ้งบันทึกไว้","s4.p":"แต่ละเกมคือสายโซ่แฮชที่คำนวณซ้ำได้ หากเครื่องผิด คุณชี้ได้ว่าผิดตรงไหน",
- "how.credit":"ภาษา Tau เอนจินและตรรกะของมันเป็นผลงานของ <b>Ohad Asor</b> และ <b>IDNI AG</b> สถาปัตยกรรมที่สร้างบนนั้น ผลงานทั้งสามและบทความเป็นผลงานของ Taumorrow เอง บางส่วนของวิธีการอยู่ระหว่างการขอสิทธิบัตร เอกสารเผยแพร่ภายใต้ <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: เปิดให้อ่าน ศึกษา ตรวจสอบ และเรียนรู้",
+ "how.credit":"ภาษา Tau เอนจินและตรรกะของมันเป็นผลงานของ <b>Ohad Asor</b> และ <b>IDNI AG</b> สถาปัตยกรรมที่สร้างบนนั้น ผลงานทั้งสี่และบทความเป็นผลงานของ Taumorrow เอง บางส่วนของวิธีการอยู่ระหว่างการขอสิทธิบัตร เอกสารเผยแพร่ภายใต้ <a href=\"https://github.com/taumorrow/tau-lang-demos/blob/main/LICENSE\">Taumorrow Demos License</a>: เปิดให้อ่าน ศึกษา ตรวจสอบ และเรียนรู้",
  "papers.h2":"บทความ","papers.lead":"ระบุวันที่และอ้างอิงได้: บทความสี่ฉบับพร้อม DOI และสมุดปกขาวเดือนธันวาคม 2025 ซึ่งเป็นจุดเริ่มต้นของงานเกมที่ยุติธรรม นี่คือแหล่งข้อมูลปฐมภูมิของทุกสิ่งในหน้านี้",
  "learn.h2":"เรียนรู้และติดตาม","learn.lead":"ทุกอย่างทำงานได้ทันที หยิบข้อกำหนดหนึ่งชุด รันมัน แก้กฎหนึ่งข้อ แล้วดูคำตัดสินเปลี่ยนไป",
  "l1.h":"ชุดบทเรียน Tau-Nomic","l1.p":"ข้อกำหนดที่อธิบายละเอียดสิบสองชุด จากกฎข้อแรกจนถึงเกมที่แก้ไขตนเอง พร้อมผลลัพธ์ที่คาดไว้ให้ตรวจสอบ",
