@@ -20,23 +20,23 @@ LANGS = [  # folder, html lang, hreflang, og:locale, label
     ("th", "th", "th", "th_TH", "ไทย"),
 ]
 META = {
-    "en": ("Taumorrow — Tau Chess, provably fair games, a playable Nomic",
+    "en": ("Taumorrow — Taumorrow Chess, provably fair games, a playable Nomic",
            "Chess engine on the Tau language that cannot bluff (9 : 1 vs Claude Sonnet 5.5), provably fair multiplayer games, a playable Nomic. Papers with DOIs, in the open since 2024."),
-    "de": ("Taumorrow — Tau Chess, beweisbar faire Spiele, spielbares Nomic",
+    "de": ("Taumorrow — Taumorrow Chess, beweisbar faire Spiele, spielbares Nomic",
            "Schach-Engine auf der Tau-Sprache, die nicht bluffen kann (9 : 1 gegen Claude Sonnet 5.5), beweisbar faire Mehrspieler-Spiele, ein spielbares Nomic. Schriften mit DOI, offen seit 2024."),
-    "es": ("Taumorrow — Tau Chess, juegos demostrablemente justos, Nomic jugable",
+    "es": ("Taumorrow — Taumorrow Chess, juegos demostrablemente justos, Nomic jugable",
            "Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador justos por construcción y un Nomic jugable. Artículos con DOI, en abierto desde 2024."),
     "zh": ("Taumorrow — Tau 象棋、可证明公平的游戏、可玩的 Nomic",
            "基于 Tau 语言的国际象棋引擎，不会虚张声势（对 Claude Sonnet 5.5 取得 9 : 1），可证明公平的多人游戏，以及可玩的 Nomic。论文均有 DOI，自 2024 年起公开。"),
-    "ru": ("Taumorrow — Tau Chess, доказуемо честные игры, играбельный Nomic",
+    "ru": ("Taumorrow — Taumorrow Chess, доказуемо честные игры, играбельный Nomic",
            "Шахматный движок на языке Tau, который не может блефовать (9 : 1 против Claude Sonnet 5.5), доказуемо честные многопользовательские игры и играбельный Nomic. Статьи с DOI, открыто с 2024 года."),
-    "th": ("Taumorrow — Tau Chess เกมที่ยุติธรรมพิสูจน์ได้ และ Nomic ที่เล่นได้",
+    "th": ("Taumorrow — Taumorrow Chess เกมที่ยุติธรรมพิสูจน์ได้ และ Nomic ที่เล่นได้",
            "เอนจินหมากรุกบนภาษา Tau ที่หลอกไม่ได้ (ชนะ Claude Sonnet 5.5 9 : 1) เกมหลายผู้เล่นที่ยุติธรรมโดยการสร้าง และ Nomic ที่เล่นได้ บทความมี DOI เปิดเผยตั้งแต่ปี 2024"),
 }
 PAPERS = [
     ("2026-08-21", "10.5281/zenodo.22038825", "A Playable Nomic with a Provably Entrenched Core: Two-level self-amendment on a decidable substrate"),
     ("2026-10-07", "10.5281/zenodo.23208762", "The Round as a Formula: Fair, transparent, real-time multiplayer games with the Tau language"),
-    ("2026-10-07", "10.5281/zenodo.23165449", "The Admitted Shortcut: Tree search over sub-specifications of a decidable logic, with Tau Chess as the worked example"),
+    ("2026-10-07", "10.5281/zenodo.23165449", "The Admitted Shortcut: Tree search over sub-specifications of a decidable logic, with Taumorrow Chess as the worked example"),
     ("2026-10-07", "10.5281/zenodo.23208550", "Learning under a Decided Gate: Changing a table that an admitted shortcut reads"),
 ]
 STR = r'"((?:[^"\\]|\\.)*)"'
@@ -198,7 +198,7 @@ def build_assets():
     dr.text((168, 74), "TAUMORROW", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
     dr.text((80, 150), "Decided,", font=ImageFont.truetype(bold, 112), fill="#e9edf3")
     dr.text((80, 270), "not guessed.", font=ImageFont.truetype(bold, 112), fill="#e9edf3")
-    dr.text((80, 420), "Tau Chess · provably fair multiplayer games · a playable Nomic", font=ImageFont.truetype(reg, 34), fill="#c3cad6")
+    dr.text((80, 420), "Taumorrow Chess · provably fair multiplayer games · a playable Nomic", font=ImageFont.truetype(reg, 34), fill="#c3cad6")
     dr.text((80, 468), "built on the Tau language · 9 : 1 vs Claude Sonnet 5.5 · every move a record", font=ImageFont.truetype(reg, 28), fill="#8a93a6")
     dr.text((80, 556), "taumorrow.com", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
     og = im
