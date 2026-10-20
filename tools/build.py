@@ -195,31 +195,35 @@ def build_assets():
         dr.ellipse([p[0] - 3, p[1] - 3, p[0] + 3, p[1] + 3], fill="#273447")
     for p in rnd.sample(pts, 9):
         dr.ellipse([p[0] - 5, p[1] - 5, p[0] + 5, p[1] + 5], fill="#6f8dff")
-    dr.text((80, 70), "TAUMORROW", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
+    dr.text((168, 74), "TAUMORROW", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
     dr.text((80, 150), "Decided,", font=ImageFont.truetype(bold, 112), fill="#e9edf3")
     dr.text((80, 270), "not guessed.", font=ImageFont.truetype(bold, 112), fill="#e9edf3")
     dr.text((80, 420), "Tau Chess · provably fair multiplayer games · a playable Nomic", font=ImageFont.truetype(reg, 34), fill="#c3cad6")
     dr.text((80, 468), "built on the Tau language · 9 : 1 vs Claude Sonnet 5.5 · every move a record", font=ImageFont.truetype(reg, 28), fill="#8a93a6")
     dr.text((80, 556), "taumorrow.com", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
-    im.save(os.path.join(ROOT, "og.png"), optimize=True)
-    # Icons: cobalt rounded square with a white tau
-    def icon(size, pad_ratio=0.0):
-        im = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    og = im
+    # Icons: the Taumorrow mark (the gate) — same geometry as brand/taumorrow-mark.svg
+    import math
+    def arc(cx, cy, r, a0, a1, n=32):
+        return [(cx + r * math.cos(math.radians(a0 + (a1 - a0) * i / n)), cy + r * math.sin(math.radians(a0 + (a1 - a0) * i / n))) for i in range(n + 1)]
+    POLY = [(13, 15), (51, 15), (51, 24), (36.5, 24), (36.5, 36)] + arc(41, 36, 4.5, 180, 90)[1:] + [(47, 40.5), (47, 49.5), (41, 49.5)] + arc(41, 36, 13.5, 90, 180)[1:] + [(27.5, 24), (13, 24)]
+    def icon(size, bg=(36, 72, 200), fg=(255, 255, 255), ss=8):
+        s = size * ss
+        im = Image.new("RGBA", (s, s), (0, 0, 0, 0))
         d = ImageDraw.Draw(im)
-        pad = int(size * pad_ratio)
-        d.rounded_rectangle([pad, pad, size - 1 - pad, size - 1 - pad], radius=int(size * 0.22), fill="#2448c8")
-        f = ImageFont.truetype(bold, int(size * 0.68))
-        box = d.textbbox((0, 0), "τ", font=f)
-        tw, th = box[2] - box[0], box[3] - box[1]
-        d.text(((size - tw) / 2 - box[0], (size - th) / 2 - box[1] - size * 0.03), "τ", font=f, fill="#ffffff")
-        return im
+        k = s / 64
+        d.rounded_rectangle([0, 0, s - 1, s - 1], radius=int(14 * k), fill=bg)
+        d.polygon([(x * k, y * k) for x, y in POLY], fill=fg)
+        return im.resize((size, size), Image.LANCZOS)
     icon(32).save(os.path.join(ROOT, "favicon-32.png"), optimize=True)
     icon(180).convert("RGB").save(os.path.join(ROOT, "apple-touch-icon.png"), optimize=True)
     icon(192).save(os.path.join(ROOT, "icon-192.png"), optimize=True)
     icon(512).save(os.path.join(ROOT, "icon-512.png"), optimize=True)
-    with open(os.path.join(ROOT, "favicon.svg"), "w") as f:
-        f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2448c8"/>'
-                '<text x="32" y="47" text-anchor="middle" font-family="Georgia,\'Times New Roman\',serif" font-size="44" font-weight="700" fill="#fff">τ</text></svg>\n')
+    with open(os.path.join(ROOT, "brand", "taumorrow-mark.svg")) as f, open(os.path.join(ROOT, "favicon.svg"), "w") as g:
+        g.write(f.read())
+    m = icon(72, bg=(111, 141, 255), fg=(13, 17, 23))
+    og.paste(m, (80, 56), m)
+    og.save(os.path.join(ROOT, "og.png"), optimize=True)
     with open(os.path.join(ROOT, "manifest.webmanifest"), "w") as f:
         json.dump({"name": "Taumorrow", "short_name": "Taumorrow", "start_url": "/", "display": "browser",
                    "background_color": "#0d1117", "theme_color": "#2448c8",

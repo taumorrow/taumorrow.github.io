@@ -67,7 +67,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 /* header */
 header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
-.brand{font:700 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand{display:inline-flex;align-items:center;gap:10px;font:700 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand .mark{flex:none}
 .brand small{display:block;font:500 11px/1 "JetBrains Mono",monospace;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;margin-top:5px}
 nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 nav a{color:var(--ink-2);text-decoration:none;font-size:15px}
@@ -157,7 +158,7 @@ main,header,footer{position:relative}
 <body>
 <canvas id="net" aria-hidden="true"></canvas>
 <header><div class="wrap">
-  <a class="brand" href="#top">Taumorrow<small>логика, которую можно проверить</small></a>
+  <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="var(--cobalt)"/><path d="M13 15H51V24H36.5V36A4.5 4.5 0 0 0 41 40.5H47V49.5H41A13.5 13.5 0 0 1 27.5 36V24H13Z" fill="var(--paper)"/></svg><span>Taumorrow<small>логика, которую можно проверить</small></span></a>
   <nav aria-label="Sections">
     <a href="#works">Работы</a><a href="#how">Как</a><a href="#papers">Статьи</a><a href="#learn">Учиться</a>
     <div class="lang" role="group" aria-label="Language"><a href="/" hreflang="en" lang="en">EN</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/ru/" hreflang="ru" lang="ru" aria-current="page">RU</a><a href="/th/" hreflang="th" lang="th">ไทย</a></div>
@@ -257,7 +258,7 @@ main,header,footer{position:relative}
 
 <footer><div class="wrap">
   <div class="cols">
-    <div><h5>Сайты</h5><a href="https://taumorrow.com">taumorrow.com</a> · <a href="https://taumorrow.de">taumorrow.de</a> · <a href="https://taumorrow.eu">taumorrow.eu</a><br><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com</a></div>
+    <div><h5>Сайты</h5><a href="https://taumorrow.com">taumorrow.com</a> · <a href="https://taumorrow.de">taumorrow.de</a> · <a href="https://taumorrow.eu">taumorrow.eu</a> · <a href="/brand/">brand</a><br><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com</a></div>
     <div><h5>Благодарности</h5><span>Tau Language © IDNI AG · Taumorrow 2024–2026 · «Taumorrow» — заявка на товарный знак подана · без cookies и слежки; в этом браузере сохраняются только язык и цветовая схема. Размещено на GitHub Pages (GitHub, Inc., США); для выдачи страницы GitHub обрабатывает данные соединения, например IP-адреса.</span></div>
   </div>
 </div></footer>

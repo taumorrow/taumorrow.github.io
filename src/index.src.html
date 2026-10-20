@@ -35,7 +35,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 /* header */
 header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
-.brand{font:700 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand{display:inline-flex;align-items:center;gap:10px;font:700 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand .mark{flex:none}
 .brand small{display:block;font:500 11px/1 "JetBrains Mono",monospace;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;margin-top:5px}
 nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 nav a{color:var(--ink-2);text-decoration:none;font-size:15px}
@@ -125,7 +126,7 @@ main,header,footer{position:relative}
 <body>
 <canvas id="net" aria-hidden="true"></canvas>
 <header><div class="wrap">
-  <a class="brand" href="#top">Taumorrow<small data-i18n="brand.sub">logic you can check</small></a>
+  <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="var(--cobalt)"/><path d="M13 15H51V24H36.5V36A4.5 4.5 0 0 0 41 40.5H47V49.5H41A13.5 13.5 0 0 1 27.5 36V24H13Z" fill="var(--paper)"/></svg><span>Taumorrow<small data-i18n="brand.sub">logic you can check</small></span></a>
   <nav aria-label="Sections">
     <a href="#works" data-i18n="nav.works">Works</a><a href="#how" data-i18n="nav.how">How</a><a href="#papers" data-i18n="nav.papers">Papers</a><a href="#learn" data-i18n="nav.learn">Learn</a>
     <div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">EN</button><button data-lang="de">DE</button><button data-lang="es">ES</button><button data-lang="zh">中文</button><button data-lang="ru">RU</button><button data-lang="th">ไทย</button></div>
@@ -225,7 +226,7 @@ main,header,footer{position:relative}
 
 <footer><div class="wrap">
   <div class="cols">
-    <div><h5 data-i18n="ft.sites">Sites</h5><a href="https://taumorrow.com">taumorrow.com</a> · <a href="https://taumorrow.de">taumorrow.de</a> · <a href="https://taumorrow.eu">taumorrow.eu</a><br><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com</a></div>
+    <div><h5 data-i18n="ft.sites">Sites</h5><a href="https://taumorrow.com">taumorrow.com</a> · <a href="https://taumorrow.de">taumorrow.de</a> · <a href="https://taumorrow.eu">taumorrow.eu</a> · <a href="/brand/">brand</a><br><a href="mailto:hallo@taumorrow.com">hallo@taumorrow.com</a></div>
     <div><h5 data-i18n="ft.credits">Credits</h5><span data-i18n-html="ft.creditsText">Tau Language © IDNI AG · Taumorrow 2024–2026 · “Taumorrow” — trademark applied for · no cookies, no tracking; only your language and colour scheme are kept in this browser. Hosted on GitHub Pages (GitHub, Inc., USA), which processes connection data such as IP addresses to deliver the page.</span></div>
   </div>
 </div></footer>
