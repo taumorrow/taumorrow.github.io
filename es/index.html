@@ -98,7 +98,8 @@ h1 b{font-weight:700}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
 /* chain strip */
 .chain{margin:48px 0 0;padding:18px 0 0;border-top:1px dashed var(--chain)}
-.chain .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.chain .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.link:nth-child(3n)::after{display:none}
 @media (max-width:900px){.chain .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.link::after{display:none}}
 @media (max-width:560px){.chain .row{grid-template-columns:1fr}}
 .link{min-width:0;padding:14px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;position:relative;overflow-wrap:anywhere}
@@ -177,8 +178,10 @@ main,header,footer{position:relative}
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
-      <div class="link"><p class="k">Estreno</p><p class="v">29 : 0</p><p class="d">contra Claude Haiku, 29 partidas, público</p></div>
+      <div class="link"><p class="k">Estreno · 4 oct 2026</p><p class="v">19 : 0</p><p class="d">contra Claude Haiku 4.5, partidas 1–20, una interrumpida, público</p></div>
+      <div class="link"><p class="k">Estreno · 4 oct 2026</p><p class="v">10 : 0</p><p class="d">contra Claude Haiku 4.5 (Thinking), partidas 21–30, público</p></div>
       <div class="link"><p class="k">18 oct 2026</p><p class="v">9 : 1</p><p class="d">contra Claude Sonnet 5.5 (Thinking), 10 partidas, público</p></div>
+      <div class="link"><p class="k">Jugadas rechazadas</p><p class="v">201 : 0</p><p class="d">modelos de lenguaje contra Taumorrow Chess, las 40 partidas públicas</p></div>
       <div class="link"><p class="k">Cada jugada</p><p class="v">un registro</p><p class="d">encadenado por hash, recalculable por cualquiera</p></div>
       <div class="link"><p class="k">Datos de aprendizaje</p><p class="v">solo partidas propias</p><p class="d">las partidas contra modelos de lenguaje son medida, nunca lección</p></div>
     </div>

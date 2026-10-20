@@ -98,7 +98,8 @@ h1 b{font-weight:700}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
 /* chain strip */
 .chain{margin:48px 0 0;padding:18px 0 0;border-top:1px dashed var(--chain)}
-.chain .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.chain .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.link:nth-child(3n)::after{display:none}
 @media (max-width:900px){.chain .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.link::after{display:none}}
 @media (max-width:560px){.chain .row{grid-template-columns:1fr}}
 .link{min-width:0;padding:14px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;position:relative;overflow-wrap:anywhere}
@@ -177,8 +178,10 @@ main,header,footer{position:relative}
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
-      <div class="link"><p class="k">Премьера</p><p class="v">29 : 0</p><p class="d">против Claude Haiku, 29 партий, публично</p></div>
+      <div class="link"><p class="k">Премьера · 4 окт. 2026</p><p class="v">19 : 0</p><p class="d">против Claude Haiku 4.5, партии 1–20, одна прервана, публично</p></div>
+      <div class="link"><p class="k">Премьера · 4 окт. 2026</p><p class="v">10 : 0</p><p class="d">против Claude Haiku 4.5 (Thinking), партии 21–30, публично</p></div>
       <div class="link"><p class="k">18 окт. 2026</p><p class="v">9 : 1</p><p class="d">против Claude Sonnet 5.5 (Thinking), 10 партий, публично</p></div>
+      <div class="link"><p class="k">Отклонённые ходы</p><p class="v">201 : 0</p><p class="d">языковые модели против Taumorrow Chess, все 40 публичных партий</p></div>
       <div class="link"><p class="k">Каждый ход</p><p class="v">запись</p><p class="d">в хеш-цепочке, пересчитать может любой</p></div>
       <div class="link"><p class="k">Данные для обучения</p><p class="v">только свои партии</p><p class="d">партии против языковых моделей — мера, а не урок</p></div>
     </div>

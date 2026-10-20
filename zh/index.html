@@ -98,7 +98,8 @@ h1 b{font-weight:700}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
 /* chain strip */
 .chain{margin:48px 0 0;padding:18px 0 0;border-top:1px dashed var(--chain)}
-.chain .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.chain .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.link:nth-child(3n)::after{display:none}
 @media (max-width:900px){.chain .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.link::after{display:none}}
 @media (max-width:560px){.chain .row{grid-template-columns:1fr}}
 .link{min-width:0;padding:14px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;position:relative;overflow-wrap:anywhere}
@@ -177,8 +178,10 @@ main,header,footer{position:relative}
   </div>
   <div class="chain" aria-label="Record">
     <div class="row">
-      <div class="link"><p class="k">首演</p><p class="v">29 : 0</p><p class="d">对阵 Claude Haiku，29 局，公开</p></div>
+      <div class="link"><p class="k">首演 · 2026 年 10 月 4 日</p><p class="v">19 : 0</p><p class="d">对阵 Claude Haiku 4.5，第 1–20 局，其中一局中止，公开</p></div>
+      <div class="link"><p class="k">首演 · 2026 年 10 月 4 日</p><p class="v">10 : 0</p><p class="d">对阵 Claude Haiku 4.5（Thinking），第 21–30 局，公开</p></div>
       <div class="link"><p class="k">2026 年 10 月 18 日</p><p class="v">9 : 1</p><p class="d">对阵 Claude Sonnet 5.5（Thinking），10 局，公开</p></div>
+      <div class="link"><p class="k">被拒绝的着法</p><p class="v">201 : 0</p><p class="d">语言模型对阵 Taumorrow Chess，全部 40 局公开对局</p></div>
       <div class="link"><p class="k">每一步</p><p class="v">一条记录</p><p class="d">哈希链接，任何人都可重新计算</p></div>
       <div class="link"><p class="k">训练数据</p><p class="v">仅限自己的对局</p><p class="d">与语言模型的对局只是度量，从不是教材</p></div>
     </div>
