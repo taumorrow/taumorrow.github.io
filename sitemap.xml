@@ -8,7 +8,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://taumorrow.com/es/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://taumorrow.com/th/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taumorrow.com/"/>
   </url>
   <url>
@@ -19,7 +18,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://taumorrow.com/es/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://taumorrow.com/th/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taumorrow.com/"/>
   </url>
   <url>
@@ -30,7 +28,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://taumorrow.com/es/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://taumorrow.com/th/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taumorrow.com/"/>
   </url>
   <url>
@@ -41,7 +38,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://taumorrow.com/es/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://taumorrow.com/th/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taumorrow.com/"/>
   </url>
   <url>
@@ -52,18 +48,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://taumorrow.com/es/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://taumorrow.com/th/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://taumorrow.com/"/>
-  </url>
-  <url>
-    <loc>https://taumorrow.com/th/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://taumorrow.com/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://taumorrow.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://taumorrow.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://taumorrow.com/zh/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://taumorrow.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://taumorrow.com/th/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taumorrow.com/"/>
   </url>
 </urlset>

@@ -17,7 +17,7 @@ LANGS = [  # folder, html lang, hreflang, og:locale, label
     ("es", "es", "es", "es_ES", "ES"),
     ("zh", "zh-Hans", "zh-Hans", "zh_CN", "中文"),
     ("ru", "ru", "ru", "ru_RU", "RU"),
-    ("th", "th", "th", "th_TH", "ไทย"),
+    # ("th", "th", "th", "th_TH", "ไทย"),   # Thai switched off for now (Lars 21.10.); translations stay in src, uncomment to re-enable
 ]
 META = {
     "en": ("Taumorrow — Taumorrow Chess, provably fair games, a playable Nomic",
@@ -139,7 +139,7 @@ def head_block(folder, hl, hreflang, locale, title, desc):
             % (t, dsc, url, alts, url, t, dsc, SITE, locale, t, dsc, SITE, ld))
 
 
-ROOT_REDIRECT = ('<script>try{var L=["de","es","zh","ru","th"],l=localStorage.getItem("taumorrow.lang");'
+ROOT_REDIRECT = ('<script>try{var L=["de","es","zh","ru"],l=localStorage.getItem("taumorrow.lang");'
                  'if(!l)l=((navigator.language||"en").toLowerCase().slice(0,2));'
                  'if(L.indexOf(l)>=0&&location.pathname==="/")location.replace("/"+l+"/"+location.hash);}catch(_){}</script>')
 LANG_STORE = ('<script>document.querySelectorAll(".lang a").forEach(function(a){a.addEventListener("click",function(){'
