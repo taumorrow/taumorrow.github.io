@@ -161,7 +161,7 @@ main,header,footer{position:relative}
 <header><div class="wrap">
   <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="var(--cobalt)"/><path d="M13 15H51V24H36.5V36A4.5 4.5 0 0 0 41 40.5H47V49.5H41A13.5 13.5 0 0 1 27.5 36V24H13Z" fill="var(--paper)"/></svg><span>Taumorrow<small>可以验证的逻辑</small></span></a>
   <nav aria-label="Sections">
-    <a href="#works">作品</a><a href="#how">原理</a><a href="#papers">论文</a><a href="#learn">学习</a>
+    <a href="#works">作品</a><a href="#games">游戏</a><a href="#how">原理</a><a href="#papers">论文</a><a href="#learn">学习</a>
     <div class="lang" role="group" aria-label="Language"><a href="/" hreflang="en" lang="en">EN</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans" aria-current="page">中文</a><a href="/ru/" hreflang="ru" lang="ru">RU</a><a href="/th/" hreflang="th" lang="th">ไทย</a></div>
     <button class="theme" id="theme" type="button" aria-label="Toggle colour scheme" title="Light / dark"><span aria-hidden="true">◐</span></button>
   </nav>
@@ -239,8 +239,24 @@ main,header,footer{position:relative}
   </article>
 </div></section>
 
+<section id="games"><div class="wrap">
+  <div class="sec-head"><div><p class="num">02</p><h2>Taumorrow Games</h2></div><p class="lead">一系列采用同一方法的多人游戏：每一轮都是一条公式，在开出前封存，任何人都可以复算。仅使用游戏币，非商业，18 岁以上。</p></div>
+
+  <article class="chapter">
+    <div><h3>Orbit 37 —— 37 格的轮盘</h3>
+      <p>四个座位对阵庄家。每次开出前，每个座位和庄家各封存一个数字；一条 Tau 语言的公式把它们按模 37 相加。号码格由所有人共同决定，没有人能操纵。庄家只能拒绝揭示，而一旦拒绝，就要支付所有投注。</p>
+      <p>每一轮都是一条签名记录，页面和任何人都可以复算。筹码是没有价值的游戏币：不能购买、出售、转让或兑现。</p></div>
+    <ul class="facts">
+      <li><span class="k">开始游戏</span><span class="v"><a href="https://games.taumorrow.com/">games.taumorrow.com</a><span class="doi">游戏币，非商业，18+ · 六种语言</span></span></li>
+      <li><span class="k">构建基础</span><span class="v">Tau 语言由 Ohad Asor 与 IDNI AG 创造 · 游戏、网络与门户由 Taumorrow 构建 · 棋盘使用 three.js（MIT）</span></li>
+      <li><span class="k">论文</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208762">The Round as a Formula</a><span class="doi">doi:10.5281/zenodo.23208762 · 7 Oct 2026</span></span></li>
+      <li><span class="k">状态</span><span class="v">已发布，游戏币，非商业，18+。另有七款游戏开发中。该方法的部分内容专利申请中。</span></li>
+    </ul>
+  </article>
+</div></section>
+
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div><p class="num">02</p><h2>原理：四个步骤</h2></div><p class="lead">同样的四个步骤支撑着全部四项作品。这里没有任何参数；参数留在工坊里。</p></div>
+  <div class="sec-head"><div><p class="num">03</p><h2>原理：四个步骤</h2></div><p class="lead">同样的四个步骤支撑着全部四项作品。这里没有任何参数；参数留在工坊里。</p></div>
   <div class="steps">
     <div class="step"><p class="n">1</p><h4>小公式，各自判定</h4><p>逻辑按任务拆分成小规范。引擎对每一种可能输入判定每一个规范，没有“大概”。</p></div>
     <div class="step"><p class="n">2</p><h4>依赖关系成为接线</h4><p>一个部件的输出是另一个部件的输入。传输层只传递数值，自己不做任何判定。</p></div>
@@ -251,7 +267,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="papers"><div class="wrap">
-  <div class="sec-head"><div><p class="num">03</p><h2>论文</h2></div><p class="lead">有日期、可引用：四篇带 DOI 的论文，以及 2025 年 12 月的白皮书，公平游戏的工作由此开始。它们是本页一切内容的原始来源。</p></div>
+  <div class="sec-head"><div><p class="num">04</p><h2>论文</h2></div><p class="lead">有日期、可引用：四篇带 DOI 的论文，以及 2025 年 12 月的白皮书，公平游戏的工作由此开始。它们是本页一切内容的原始来源。</p></div>
   <ul class="facts">
     <li><span class="k mono">2025-12</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming/blob/master/PROVABLY_FAIR_GAMING_WHITEPAPER.MD">Provably Fair Multiplayer Gaming via Formal Verification: A framework for trust-reduced gaming using the Tau language (white paper v1.02)</a><span class="doi">github.com/taumorrow/provably_fair_gaming · the origin of the fair gaming work</span></span></li>
     <li><span class="k mono">2026-01-18</span><span class="v"><a href="https://github.com/taumorrow/axiom/blob/master/AXIOM.md">AXIOM: Software Synthesis Through Mathematical Breakthrough. A production demonstration of the Tau language</a><span class="doi">github.com/taumorrow/axiom · a multiplayer board game in which every critical decision is a Tau formula</span></span></li>
@@ -263,7 +279,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="learn"><div class="wrap">
-  <div class="sec-head"><div><p class="num">04</p><h2>学习与关注</h2></div><p class="lead">一切都可直接运行。取一个规范，运行它，改一条规则，看裁决如何改变。</p></div>
+  <div class="sec-head"><div><p class="num">05</p><h2>学习与关注</h2></div><p class="lead">一切都可直接运行。取一个规范，运行它，改一条规则，看裁决如何改变。</p></div>
   <div class="cards">
     <div class="card"><h4>Tau-Nomic 教程系列</h4><p>十二个完整示例，从第一条规则到自我修订的游戏，附有可核对的预期结果。</p><a href="https://github.com/taumorrow/tau-lang-demos">github.com/taumorrow/tau-lang-demos →</a></div>
     <div class="card"><h4>公平游戏，从一开始</h4><p>2025 年 12 月的白皮书以及面向无需信任的游戏的公开框架。</p><a href="https://github.com/taumorrow/provably_fair_gaming">github.com/taumorrow/provably_fair_gaming →</a></div>

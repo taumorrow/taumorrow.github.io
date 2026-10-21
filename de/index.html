@@ -161,7 +161,7 @@ main,header,footer{position:relative}
 <header><div class="wrap">
   <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="var(--cobalt)"/><path d="M13 15H51V24H36.5V36A4.5 4.5 0 0 0 41 40.5H47V49.5H41A13.5 13.5 0 0 1 27.5 36V24H13Z" fill="var(--paper)"/></svg><span>Taumorrow<small>logik, die man prüfen kann</small></span></a>
   <nav aria-label="Sections">
-    <a href="#works">Arbeiten</a><a href="#how">Wie</a><a href="#papers">Schriften</a><a href="#learn">Lernen</a>
+    <a href="#works">Arbeiten</a><a href="#games">Spiele</a><a href="#how">Wie</a><a href="#papers">Schriften</a><a href="#learn">Lernen</a>
     <div class="lang" role="group" aria-label="Language"><a href="/" hreflang="en" lang="en">EN</a><a href="/de/" hreflang="de" lang="de" aria-current="page">DE</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/ru/" hreflang="ru" lang="ru">RU</a><a href="/th/" hreflang="th" lang="th">ไทย</a></div>
     <button class="theme" id="theme" type="button" aria-label="Toggle colour scheme" title="Light / dark"><span aria-hidden="true">◐</span></button>
   </nav>
@@ -239,8 +239,24 @@ main,header,footer{position:relative}
   </article>
 </div></section>
 
+<section id="games"><div class="wrap">
+  <div class="sec-head"><div><p class="num">02</p><h2>Taumorrow Games</h2></div><p class="lead">Eine Reihe von Mehrspieler-Spielen nach derselben Methode: Jede Runde ist eine Formel, vor der Ziehung versiegelt, für jeden nachrechenbar. Nur Spielgeld, nicht kommerziell, ab 18.</p></div>
+
+  <article class="chapter">
+    <div><h3>Orbit 37 — ein Rad mit 37 Fächern</h3>
+      <p>Vier Plätze spielen gegen die Bank. Vor jeder Ziehung versiegeln alle Plätze und die Bank eine Zahl; eine Formel in der Tau-Sprache addiert sie modulo 37. So entscheiden alle über das Fach, und niemand lenkt es. Die Bank kann nur die Öffnung verweigern, und dann zahlt sie jede Wette.</p>
+      <p>Jede Runde ist ein unterschriebener Datensatz, den die Seite und jeder andere nachrechnen kann. Chips sind Spielgeld ohne Wert: sie können nicht gekauft, verkauft, übertragen oder ausgezahlt werden.</p></div>
+    <ul class="facts">
+      <li><span class="k">Spielen</span><span class="v"><a href="https://games.taumorrow.com/">games.taumorrow.com</a><span class="doi">Spielgeld, nicht kommerziell, ab 18 · sechs Sprachen</span></span></li>
+      <li><span class="k">Gebaut auf</span><span class="v">Tau-Sprache von Ohad Asor und IDNI AG · Spiel, Netz und Portal von Taumorrow · three.js (MIT) für das Brett</span></li>
+      <li><span class="k">Schrift</span><span class="v"><a href="https://doi.org/10.5281/zenodo.23208762">The Round as a Formula</a><span class="doi">doi:10.5281/zenodo.23208762 · 7 Oct 2026</span></span></li>
+      <li><span class="k">Stand</span><span class="v">Freigegeben mit Spielgeld, nicht kommerziell, ab 18. Sieben weitere Spiele sind in Entwicklung. Teile der Methode sind zum Patent angemeldet.</span></li>
+    </ul>
+  </article>
+</div></section>
+
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div><p class="num">02</p><h2>So funktioniert es, in vier Schritten</h2></div><p class="lead">Dieselben vier Schritte tragen alle vier Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.</p></div>
+  <div class="sec-head"><div><p class="num">03</p><h2>So funktioniert es, in vier Schritten</h2></div><p class="lead">Dieselben vier Schritte tragen alle vier Arbeiten. Nichts hier ist ein Parameter; die Parameter bleiben in der Werkstatt.</p></div>
   <div class="steps">
     <div class="step"><p class="n">1</p><h4>Kleine Formeln, jede entschieden</h4><p>Die Logik ist nach Aufgabe in kleine Spezifikationen zerlegt. Die Engine entscheidet jede für jede mögliche Eingabe, es gibt kein „wahrscheinlich“.</p></div>
     <div class="step"><p class="n">2</p><h4>Abhängigkeiten werden zur Verdrahtung</h4><p>Der Ausgang eines Teils ist der Eingang eines anderen. Eine Transportschicht reicht Werte weiter und entscheidet selbst nichts.</p></div>
@@ -251,7 +267,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="papers"><div class="wrap">
-  <div class="sec-head"><div><p class="num">03</p><h2>Schriften</h2></div><p class="lead">Datiert und zitierbar: vier Schriften mit DOI und das Whitepaper vom Dezember 2025, mit dem die Arbeit an fairen Spielen begann. Das sind die Primärquellen für alles auf dieser Seite.</p></div>
+  <div class="sec-head"><div><p class="num">04</p><h2>Schriften</h2></div><p class="lead">Datiert und zitierbar: vier Schriften mit DOI und das Whitepaper vom Dezember 2025, mit dem die Arbeit an fairen Spielen begann. Das sind die Primärquellen für alles auf dieser Seite.</p></div>
   <ul class="facts">
     <li><span class="k mono">2025-12</span><span class="v"><a href="https://github.com/taumorrow/provably_fair_gaming/blob/master/PROVABLY_FAIR_GAMING_WHITEPAPER.MD">Provably Fair Multiplayer Gaming via Formal Verification: A framework for trust-reduced gaming using the Tau language (white paper v1.02)</a><span class="doi">github.com/taumorrow/provably_fair_gaming · the origin of the fair gaming work</span></span></li>
     <li><span class="k mono">2026-01-18</span><span class="v"><a href="https://github.com/taumorrow/axiom/blob/master/AXIOM.md">AXIOM: Software Synthesis Through Mathematical Breakthrough. A production demonstration of the Tau language</a><span class="doi">github.com/taumorrow/axiom · a multiplayer board game in which every critical decision is a Tau formula</span></span></li>
@@ -263,7 +279,7 @@ main,header,footer{position:relative}
 </div></section>
 
 <section id="learn"><div class="wrap">
-  <div class="sec-head"><div><p class="num">04</p><h2>Lernen und folgen</h2></div><p class="lead">Alles läuft, wie es ist. Nimm eine Spezifikation, führe sie aus, ändere eine Regel, sieh zu, wie sich das Verdikt ändert.</p></div>
+  <div class="sec-head"><div><p class="num">05</p><h2>Lernen und folgen</h2></div><p class="lead">Alles läuft, wie es ist. Nimm eine Spezifikation, führe sie aus, ändere eine Regel, sieh zu, wie sich das Verdikt ändert.</p></div>
   <div class="cards">
     <div class="card"><h4>Tau-Nomic-Tutorial-Reihe</h4><p>Zwölf ausgearbeitete Spezifikationen, von der ersten Regel bis zum selbständernden Spiel, mit erwarteten Ergebnissen zum Prüfen.</p><a href="https://github.com/taumorrow/tau-lang-demos">github.com/taumorrow/tau-lang-demos →</a></div>
     <div class="card"><h4>Faire Spiele, von Anfang an</h4><p>Das Whitepaper vom Dezember 2025 und das öffentliche Gerüst für vertrauensfreie Spiele.</p><a href="https://github.com/taumorrow/provably_fair_gaming">github.com/taumorrow/provably_fair_gaming →</a></div>
