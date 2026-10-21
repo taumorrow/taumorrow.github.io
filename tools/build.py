@@ -18,23 +18,23 @@ LANGS = [  # folder, html lang, hreflang, og:locale, label
     ("zh", "zh-Hans", "zh-Hans", "zh_CN", "中文"),
     ("ru", "ru", "ru", "ru_RU", "RU"),
     ("fr", "fr", "fr", "fr_FR", "FR"),
-    # ("th", "th", "th", "th_TH", "ไทย"),   # Thai switched off for now (Lars 21.10.); translations stay in src, uncomment to re-enable
+    # ("th", "th", "th", "th_TH", "ไทย"),   # Thai switched off for now; translations stay in src, uncomment to re-enable
 ]
 META = {
-    "en": ("Taumorrow — Taumorrow Chess, provably fair games, a playable Nomic",
-           "Chess engine on the Tau language that cannot bluff (9 : 1 vs Claude Sonnet 5.5), provably fair multiplayer games, a playable Nomic. Papers with DOIs, in the open since 2024."),
-    "de": ("Taumorrow — Taumorrow Chess, beweisbar faire Spiele, spielbares Nomic",
-           "Schach-Engine auf der Tau-Sprache, die nicht bluffen kann (9 : 1 gegen Claude Sonnet 5.5), beweisbar faire Mehrspieler-Spiele, ein spielbares Nomic. Schriften mit DOI, offen seit 2024."),
-    "es": ("Taumorrow — Taumorrow Chess, juegos demostrablemente justos, Nomic jugable",
-           "Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador justos por construcción y un Nomic jugable. Artículos con DOI, en abierto desde 2024."),
-    "zh": ("Taumorrow — Tau 象棋、可证明公平的游戏、可玩的 Nomic",
-           "基于 Tau 语言的国际象棋引擎，不会虚张声势（对 Claude Sonnet 5.5 取得 9 : 1），可证明公平的多人游戏，以及可玩的 Nomic。论文均有 DOI，自 2024 年起公开。"),
-    "ru": ("Taumorrow — Taumorrow Chess, доказуемо честные игры, играбельный Nomic",
-           "Шахматный движок на языке Tau, который не может блефовать (9 : 1 против Claude Sonnet 5.5), доказуемо честные многопользовательские игры и играбельный Nomic. Статьи с DOI, открыто с 2024 года."),
-    "fr": ("Taumorrow — Taumorrow Chess, jeux à l’équité démontrable, Nomic jouable",
-           "Moteur d’échecs sur le langage Tau qui ne peut pas bluffer (9 : 1 contre Claude Sonnet 5.5), jeux multijoueurs à l’équité démontrable, un Nomic jouable. Articles avec DOI, en accès ouvert depuis 2024."),
-    "th": ("Taumorrow — Taumorrow Chess เกมที่ยุติธรรมพิสูจน์ได้ และ Nomic ที่เล่นได้",
-           "เอนจินหมากรุกบนภาษา Tau ที่หลอกไม่ได้ (ชนะ Claude Sonnet 5.5 9 : 1) เกมหลายผู้เล่นที่ยุติธรรมโดยการสร้าง และ Nomic ที่เล่นได้ บทความมี DOI เปิดเผยตั้งแต่ปี 2024"),
+    "en": ("Taumorrow Chess, games whose every round you can recompute, a playable Nomic",
+           "Chess engine on the Tau language that cannot bluff (9 : 1 vs Claude Sonnet 5.5), multiplayer games whose every round anyone can recompute, a playable Nomic. Papers with DOIs, in the open since 2024."),
+    "de": ("Taumorrow Chess, Spiele, deren jede Runde man nachrechnen kann, ein spielbares Nomic",
+           "Schach-Engine auf der Tau-Sprache, die nicht bluffen kann (9 : 1 gegen Claude Sonnet 5.5), Mehrspieler-Spiele, deren Runden jeder nachrechnen kann, ein spielbares Nomic. Schriften mit DOI, offen seit 2024."),
+    "es": ("Taumorrow Chess, juegos en los que cada ronda se puede recalcular, Nomic jugable",
+           "Motor de ajedrez sobre el lenguaje Tau que no puede farolear (9 : 1 contra Claude Sonnet 5.5), juegos multijugador en los que cualquiera puede recalcular cada ronda y un Nomic jugable. Artículos con DOI, en abierto desde 2024."),
+    "zh": ("Taumorrow Chess、每一轮都可复算的游戏、可玩的 Nomic",
+           "基于 Tau 语言的国际象棋引擎，不会虚张声势（对 Claude Sonnet 5.5 取得 9 : 1），每一轮都可由任何人复算的多人游戏，以及可玩的 Nomic。论文均有 DOI，自 2024 年起公开。"),
+    "ru": ("Taumorrow Chess, игры, каждый раунд которых можно пересчитать, играбельный Nomic",
+           "Шахматный движок на языке Tau, который не может блефовать (9 : 1 против Claude Sonnet 5.5), многопользовательские игры, каждый раунд которых может пересчитать любой, и играбельный Nomic. Статьи с DOI, открыто с 2024 года."),
+    "fr": ("Taumorrow Chess, jeux dont chaque tour peut être recalculé, Nomic jouable",
+           "Moteur d’échecs sur le langage Tau qui ne peut pas bluffer (9 : 1 contre Claude Sonnet 5.5), des jeux multijoueurs dont chaque tour peut être recalculé par n’importe qui, un Nomic jouable. Articles avec DOI, en accès ouvert depuis 2024."),
+    "th": ("Taumorrow Chess เกมที่ทุกรอบคำนวณซ้ำได้ และ Nomic ที่เล่นได้",
+           "เอนจินหมากรุกบนภาษา Tau ที่หลอกไม่ได้ (ชนะ Claude Sonnet 5.5 9 : 1) เกมหลายผู้เล่นที่ใครก็คำนวณซ้ำได้ทุกรอบ และ Nomic ที่เล่นได้ บทความมี DOI เปิดเผยตั้งแต่ปี 2024"),
 }
 PAPERS = [
     ("2026-08-21", "10.5281/zenodo.22038825", "A Playable Nomic with a Provably Entrenched Core: Two-level self-amendment on a decidable substrate"),
@@ -155,8 +155,6 @@ def build_pages(src):
     base = base.replace('.lang button{', '.lang button,.lang a{text-decoration:none;')
     base = base.replace('.lang button[aria-pressed="true"]{', '.lang button[aria-pressed="true"],.lang a[aria-current="page"]{')
     base = base.replace('.lang button{padding:7px 7px', '.lang button,.lang a{padding:7px 7px')
-    base = base.replace('<link rel="preconnect" href="https://fonts.googleapis.com">',
-                        '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
     base = re.sub(r'<div class="lang" role="group" aria-label="Language">.*?</div>', "@@LANG@@", base, count=1, flags=re.S)
     head_old = re.search(r'<title>Taumorrow</title>\n<meta name="description" content="[^"]*">', base).group(0)
     base = base.replace(head_old, "@@HEAD@@")
@@ -170,7 +168,7 @@ def build_pages(src):
         doc = doc.replace("@@LANG@@", lang_links(hl))
         doc = doc.replace("@@HEAD@@", head_block(folder, hl, hreflang, locale, title, desc))
         if not folder:
-            doc = doc.replace("</script>\n<link rel=\"preconnect\"", "</script>\n" + ROOT_REDIRECT + "\n<link rel=\"preconnect\"", 1)
+            doc = doc.replace("</script>\n<link rel=\"stylesheet\" href=\"/fonts/fonts.css\">", "</script>\n" + ROOT_REDIRECT + "\n<link rel=\"stylesheet\" href=\"/fonts/fonts.css\">", 1)
             assert ROOT_REDIRECT in doc
         out_dir = os.path.join(ROOT, folder) if folder else ROOT
         os.makedirs(out_dir, exist_ok=True)
@@ -201,7 +199,7 @@ def build_assets():
     dr.text((168, 74), "TAUMORROW", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
     dr.text((80, 150), "Decided,", font=ImageFont.truetype(bold, 112), fill="#e9edf3")
     dr.text((80, 270), "not guessed.", font=ImageFont.truetype(bold, 112), fill="#e9edf3")
-    dr.text((80, 420), "Taumorrow Chess · provably fair multiplayer games · a playable Nomic", font=ImageFont.truetype(reg, 34), fill="#c3cad6")
+    dr.text((80, 420), "Taumorrow Chess · games you can recompute · a playable Nomic", font=ImageFont.truetype(reg, 34), fill="#c3cad6")
     dr.text((80, 468), "built on the Tau language · 9 : 1 vs Claude Sonnet 5.5 · every move a record", font=ImageFont.truetype(reg, 28), fill="#8a93a6")
     dr.text((80, 556), "taumorrow.com", font=ImageFont.truetype(bold, 30), fill="#6f8dff")
     og = im
