@@ -43,3 +43,5 @@ Served unchanged as Google Fonts serves them (WOFF2 from fonts.gstatic.com, Bric
 | noto-sans-sc-cjk118.woff2 | f26330ce4056382832c0f2a0d7f411e0b4140fc87937e8865d91664410cfb98c |
 | noto-sans-sc-cjk119.woff2 | 09b9fa5a9521fbeccb8267a5abe7443c83cbe25b32eb15b00de316d913235525 |
 | noto-sans-sc-cjk24.woff2 | fc59757db66129052cd8e4248045f92f8273b37f719be2a058a55859de190a0e |
+
+| noto-sans-sc-cjk100.woff2 | 2c5ddf9cdfad73afb5235e06bc8ed3b5c627849200d673978148700c78f84160 |
