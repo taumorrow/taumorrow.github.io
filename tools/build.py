@@ -17,6 +17,7 @@ LANGS = [  # folder, html lang, hreflang, og:locale, label
     ("es", "es", "es", "es_ES", "ES"),
     ("zh", "zh-Hans", "zh-Hans", "zh_CN", "中文"),
     ("ru", "ru", "ru", "ru_RU", "RU"),
+    ("fr", "fr", "fr", "fr_FR", "FR"),
     # ("th", "th", "th", "th_TH", "ไทย"),   # Thai switched off for now (Lars 21.10.); translations stay in src, uncomment to re-enable
 ]
 META = {
@@ -30,6 +31,8 @@ META = {
            "基于 Tau 语言的国际象棋引擎，不会虚张声势（对 Claude Sonnet 5.5 取得 9 : 1），可证明公平的多人游戏，以及可玩的 Nomic。论文均有 DOI，自 2024 年起公开。"),
     "ru": ("Taumorrow — Taumorrow Chess, доказуемо честные игры, играбельный Nomic",
            "Шахматный движок на языке Tau, который не может блефовать (9 : 1 против Claude Sonnet 5.5), доказуемо честные многопользовательские игры и играбельный Nomic. Статьи с DOI, открыто с 2024 года."),
+    "fr": ("Taumorrow — Taumorrow Chess, jeux à l’équité démontrable, Nomic jouable",
+           "Moteur d’échecs sur le langage Tau qui ne peut pas bluffer (9 : 1 contre Claude Sonnet 5.5), jeux multijoueurs à l’équité démontrable, un Nomic jouable. Articles avec DOI, en accès ouvert depuis 2024."),
     "th": ("Taumorrow — Taumorrow Chess เกมที่ยุติธรรมพิสูจน์ได้ และ Nomic ที่เล่นได้",
            "เอนจินหมากรุกบนภาษา Tau ที่หลอกไม่ได้ (ชนะ Claude Sonnet 5.5 9 : 1) เกมหลายผู้เล่นที่ยุติธรรมโดยการสร้าง และ Nomic ที่เล่นได้ บทความมี DOI เปิดเผยตั้งแต่ปี 2024"),
 }
@@ -139,7 +142,7 @@ def head_block(folder, hl, hreflang, locale, title, desc):
             % (t, dsc, url, alts, url, t, dsc, SITE, locale, t, dsc, SITE, ld))
 
 
-ROOT_REDIRECT = ('<script>try{var L=["de","es","zh","ru"],l=localStorage.getItem("taumorrow.lang");'
+ROOT_REDIRECT = ('<script>try{var L=["de","es","zh","ru","fr"],l=localStorage.getItem("taumorrow.lang");'
                  'if(!l)l=((navigator.language||"en").toLowerCase().slice(0,2));'
                  'if(L.indexOf(l)>=0&&location.pathname==="/")location.replace("/"+l+"/"+location.hash);}catch(_){}</script>')
 LANG_STORE = ('<script>document.querySelectorAll(".lang a").forEach(function(a){a.addEventListener("click",function(){'
