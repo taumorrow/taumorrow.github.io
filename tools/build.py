@@ -208,7 +208,7 @@ def build_assets():
     def arc(cx, cy, r, a0, a1, n=32):
         return [(cx + r * math.cos(math.radians(a0 + (a1 - a0) * i / n)), cy + r * math.sin(math.radians(a0 + (a1 - a0) * i / n))) for i in range(n + 1)]
     POLY = [(13, 15), (51, 15), (51, 24), (36.5, 24), (36.5, 36)] + arc(41, 36, 4.5, 180, 90)[1:] + [(47, 40.5), (47, 49.5), (41, 49.5)] + arc(41, 36, 13.5, 90, 180)[1:] + [(27.5, 24), (13, 24)]
-    def icon(size, bg=(36, 72, 200), fg=(255, 255, 255), ss=8):
+    def icon(size, bg=(111, 141, 255), fg=(13, 17, 23), ss=8):
         s = size * ss
         im = Image.new("RGBA", (s, s), (0, 0, 0, 0))
         d = ImageDraw.Draw(im)
@@ -220,7 +220,7 @@ def build_assets():
     icon(180).convert("RGB").save(os.path.join(ROOT, "apple-touch-icon.png"), optimize=True)
     icon(192).save(os.path.join(ROOT, "icon-192.png"), optimize=True)
     icon(512).save(os.path.join(ROOT, "icon-512.png"), optimize=True)
-    with open(os.path.join(ROOT, "brand", "taumorrow-mark.svg")) as f, open(os.path.join(ROOT, "favicon.svg"), "w") as g:
+    with open(os.path.join(ROOT, "brand", "taumorrow-mark-dark.svg")) as f, open(os.path.join(ROOT, "favicon.svg"), "w") as g:
         g.write(f.read())
     m = icon(72, bg=(111, 141, 255), fg=(13, 17, 23))
     og.paste(m, (80, 56), m)
